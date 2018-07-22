@@ -1,0 +1,30 @@
+import { IOpenable } from 'pip-services-commons-node';
+import { IConfigurable } from 'pip-services-commons-node';
+import { IReferenceable } from 'pip-services-commons-node';
+import { IReferences } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services-commons-node';
+import { DependencyResolver } from 'pip-services-commons-node';
+import { CompositeLogger } from 'pip-services-components-node';
+import { CompositeCounters } from 'pip-services-components-node';
+import { Timing } from 'pip-services-components-node';
+import { AwsConnectionParams } from '../connect/AwsConnectionParams';
+import { AwsConnectionResolver } from '../connect/AwsConnectionResolver';
+export declare abstract class LambdaClient implements IOpenable, IConfigurable, IReferenceable {
+    protected _lambda: any;
+    protected _opened: boolean;
+    protected _connection: AwsConnectionParams;
+    private _connectTimeout;
+    protected _dependencyResolver: DependencyResolver;
+    protected _connectionResolver: AwsConnectionResolver;
+    protected _logger: CompositeLogger;
+    protected _counters: CompositeCounters;
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    protected instrument(correlationId: string, name: string): Timing;
+    isOpened(): boolean;
+    open(correlationId: string, callback: (err?: any) => void): void;
+    close(correlationId: string, callback?: (err?: any) => void): void;
+    protected invoke(invocationType: string, cmd: string, correlationId: string, args: any, callback?: (err: any, result: any) => void): void;
+    protected call(cmd: string, correlationId: string, params?: any, callback?: (err: any, result: any) => void): void;
+    protected callOneWay(cmd: string, correlationId: string, params?: any, callback?: (err: any) => void): void;
+}
