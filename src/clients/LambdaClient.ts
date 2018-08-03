@@ -47,12 +47,12 @@ export abstract class LambdaClient implements IOpenable, IConfigurable, IReferen
         return this._counters.beginTiming(name + ".exec_time");
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return this._opened;
     }
 
     public open(correlationId: string, callback: (err?: any) => void): void {
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             if (callback) callback();
             return;
         }

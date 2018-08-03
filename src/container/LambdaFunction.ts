@@ -147,7 +147,7 @@ export abstract class LambdaFunction extends Container {
     
     private handler(event: any, context: any) {
         // If already started then execute
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             this.execute(event, context);
         }
         // Start before execute

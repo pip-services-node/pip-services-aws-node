@@ -106,7 +106,7 @@ class LambdaFunction extends pip_services_container_node_1.Container {
     }
     handler(event, context) {
         // If already started then execute
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             this.execute(event, context);
         }
         // Start before execute

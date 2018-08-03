@@ -21,7 +21,7 @@ export declare abstract class LambdaClient implements IOpenable, IConfigurable, 
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
     protected instrument(correlationId: string, name: string): Timing;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback: (err?: any) => void): void;
     close(correlationId: string, callback?: (err?: any) => void): void;
     protected invoke(invocationType: string, cmd: string, correlationId: string, args: any, callback?: (err: any, result: any) => void): void;
