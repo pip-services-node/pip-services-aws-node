@@ -9,7 +9,7 @@ import { UnknownException } from 'pip-services-commons-node';
 import { BadRequestException } from 'pip-services-commons-node';
 import { Container } from 'pip-services-container-node';
 import { Timing } from 'pip-services-components-node';
-import { ConsoleLogger } from 'pip-services-components-node';
+import { ConsoleLogger } from 'pip-services-commons-node';
 import { CompositeCounters } from 'pip-services-components-node';
 
 export abstract class LambdaFunction extends Container {

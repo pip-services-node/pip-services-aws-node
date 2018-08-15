@@ -36,6 +36,9 @@ class LambdaClient {
     isOpen() {
         return this._opened;
     }
+    isOpened() {
+        return this._opened;
+    }
     open(correlationId, callback) {
         if (this.isOpen()) {
             if (callback)

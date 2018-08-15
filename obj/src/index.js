@@ -6,4 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./clients"));
 __export(require("./container"));
 __export(require("./connect"));
+__export(require("./log"));
+__export(require("./count"));
 //# sourceMappingURL=index.js.map
