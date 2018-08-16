@@ -127,7 +127,6 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
                     (callback) => {
                         this._client.putMetricData(params, function (err, data) {
                             if (err) {
-                                console.log("put error: ", err);
                                 if (this._logger)
                                     this._logger.error("cloudwatch_counters", err, "putMetricData error");
                             }
@@ -148,7 +147,6 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
         if (data.length > 0) {
             this._client.putMetricData(params, function (err, data) {
                 if (err) {
-                    console.log("put error: ", err);
                     if (this._logger)
                         this._logger.error("cloudwatch_counters", err, "putMetricData error");
                 }

@@ -8,4 +8,5 @@ __export(require("./container"));
 __export(require("./connect"));
 __export(require("./log"));
 __export(require("./count"));
+__export(require("./build"));
 //# sourceMappingURL=index.js.map

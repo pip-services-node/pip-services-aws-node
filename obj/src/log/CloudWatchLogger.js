@@ -167,7 +167,8 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
         };
         this._client.putLogEvents(params, (err, data) => {
             if (err) {
-                this._logger.error("cloudwatch_logger", err, "putLogEvents error");
+                if (this._logger)
+                    this._logger.error("cloudwatch_logger", err, "putLogEvents error");
             }
         });
     }
