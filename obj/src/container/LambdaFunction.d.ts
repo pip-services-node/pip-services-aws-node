@@ -15,17 +15,17 @@ export declare abstract class LambdaFunction extends Container {
     };
     protected _configPath: string;
     constructor(name?: string, description?: string);
-    private getConfigPath();
-    private getParameters();
-    private captureErrors(correlationId);
-    private captureExit(correlationId);
+    private getConfigPath;
+    private getParameters;
+    private captureErrors;
+    private captureExit;
     setReferences(references: IReferences): void;
     protected instrument(correlationId: string, name: string): Timing;
     run(callback?: (err: any) => void): void;
     protected abstract register(): void;
     protected registerAction(cmd: string, schema: Schema, action: (params: any, callback: (err: any, result: any) => void) => void): void;
-    private execute(event, context);
-    private handler(event, context);
+    private execute;
+    private handler;
     getHandler(): (event: any, context: any) => void;
     act(params: any, callback: (err: any, result: any) => void): void;
 }

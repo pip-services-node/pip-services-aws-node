@@ -18,6 +18,6 @@ export declare class CloudWatchCounters extends CachedCounters implements IRefer
     isOpened(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
-    private getCounterData(counter, now, dimensions);
+    private getCounterData;
     protected save(counters: Counter[]): void;
 }
