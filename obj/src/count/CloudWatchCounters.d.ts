@@ -1,7 +1,7 @@
 import { IReferenceable } from 'pip-services-commons-node';
 import { IReferences } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
-import { CachedCounters, Counter } from 'pip-services-commons-node';
+import { CachedCounters, Counter } from 'pip-services-components-node';
 import { ConfigParams } from 'pip-services-commons-node';
 export declare class CloudWatchCounters extends CachedCounters implements IReferenceable, IOpenable {
     private _logger;
@@ -15,7 +15,7 @@ export declare class CloudWatchCounters extends CachedCounters implements IRefer
     constructor();
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
     private getCounterData(counter, now, dimensions);

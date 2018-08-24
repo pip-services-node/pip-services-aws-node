@@ -7,17 +7,17 @@ const pip_services_commons_node_2 = require("pip-services-commons-node");
 const pip_services_commons_node_3 = require("pip-services-commons-node");
 const pip_services_commons_node_4 = require("pip-services-commons-node");
 const pip_services_container_node_1 = require("pip-services-container-node");
-const pip_services_commons_node_5 = require("pip-services-commons-node");
 const pip_services_components_node_1 = require("pip-services-components-node");
+const pip_services_components_node_2 = require("pip-services-components-node");
 class LambdaFunction extends pip_services_container_node_1.Container {
     constructor(name, description) {
         super(name, description);
-        this._counters = new pip_services_components_node_1.CompositeCounters();
+        this._counters = new pip_services_components_node_2.CompositeCounters();
         this._dependencyResolver = new pip_services_commons_node_2.DependencyResolver();
         this._schemas = {};
         this._actions = {};
         this._configPath = './config/config.yaml';
-        this._logger = new pip_services_commons_node_5.ConsoleLogger();
+        this._logger = new pip_services_components_node_1.ConsoleLogger();
     }
     getConfigPath() {
         return process.env.CONFIG_PATH || this._configPath;

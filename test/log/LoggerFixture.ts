@@ -1,7 +1,7 @@
 let assert = require('chai').assert;
 
-import { LogLevel } from 'pip-services-commons-node';
-import { CachedLogger } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
+import { CachedLogger } from 'pip-services-components-node';
 
 export class LoggerFixture {
     private _logger: CachedLogger;

@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let async = require('async');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
+const pip_services_components_node_1 = require("pip-services-components-node");
+const pip_services_components_node_2 = require("pip-services-components-node");
 const connect_1 = require("../connect");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
-const pip_services_commons_node_4 = require("pip-services-commons-node");
+const pip_services_components_node_3 = require("pip-services-components-node");
+const pip_services_commons_node_1 = require("pip-services-commons-node");
 const CloudWatchUnit_1 = require("./CloudWatchUnit");
-class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
+class CloudWatchCounters extends pip_services_components_node_2.CachedCounters {
     constructor() {
         super();
-        this._logger = new pip_services_commons_node_3.CompositeLogger();
+        this._logger = new pip_services_components_node_3.CompositeLogger();
         this._connectionResolver = new connect_1.AwsConnectionResolver();
         this._connectTimeout = 30000;
         this._client = null; //AmazonCloudWatchClient
@@ -19,20 +19,20 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
     configure(config) {
         super.configure(config);
         this._connectionResolver.configure(config);
-        this._source = config.getAsStringWithDefault('soruce', this._source);
-        this._instance = config.getAsStringWithDefault('group', this._instance);
+        this._source = config.getAsStringWithDefault('source', this._source);
+        this._instance = config.getAsStringWithDefault('instance', this._instance);
         this._connectTimeout = config.getAsIntegerWithDefault("options.connect_timeout", this._connectTimeout);
     }
     setReferences(references) {
         this._logger.setReferences(references);
         this._connectionResolver.setReferences(references);
-        let contextInfo = references.getOneOptional(new pip_services_commons_node_4.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        let contextInfo = references.getOneOptional(new pip_services_commons_node_1.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
         if (contextInfo != null && this._source == null)
             this._source = contextInfo.name;
         if (contextInfo != null && this._instance == null)
             this._instance = contextInfo.contextId;
     }
-    isOpened() {
+    isOpen() {
         return this._opened;
     }
     open(correlationId, callback) {
@@ -78,11 +78,11 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
             Unit: CloudWatchUnit_1.CloudWatchUnit.None,
         };
         switch (counter.type) {
-            case pip_services_commons_node_1.CounterType.Increment:
+            case pip_services_components_node_1.CounterType.Increment:
                 value['Value'] = counter.count;
                 value.Unit = CloudWatchUnit_1.CloudWatchUnit.Count;
                 break;
-            case pip_services_commons_node_1.CounterType.Interval:
+            case pip_services_components_node_1.CounterType.Interval:
                 value.Unit = CloudWatchUnit_1.CloudWatchUnit.Milliseconds;
                 //value.Value = counter.average;
                 value['StatisticValues'] = {
@@ -92,7 +92,7 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
                     Sum: counter.count * counter.average
                 };
                 break;
-            case pip_services_commons_node_1.CounterType.Statistics:
+            case pip_services_components_node_1.CounterType.Statistics:
                 //value.Value = counter.average;
                 value['StatisticValues'] = {
                     SampleCount: counter.count,
@@ -101,10 +101,10 @@ class CloudWatchCounters extends pip_services_commons_node_2.CachedCounters {
                     Sum: counter.count * counter.average
                 };
                 break;
-            case pip_services_commons_node_1.CounterType.LastValue:
+            case pip_services_components_node_1.CounterType.LastValue:
                 value['Value'] = counter.last;
                 break;
-            case pip_services_commons_node_1.CounterType.Timestamp:
+            case pip_services_components_node_1.CounterType.Timestamp:
                 value['Value'] = counter.time.getTime();
                 break;
         }

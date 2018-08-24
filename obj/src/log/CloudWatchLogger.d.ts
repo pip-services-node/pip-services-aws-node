@@ -1,8 +1,9 @@
-import { IReferenceable, LogLevel } from 'pip-services-commons-node';
+import { IReferenceable } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
 import { IReferences } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
-import { CachedLogger } from 'pip-services-commons-node';
-import { LogMessage } from 'pip-services-commons-node';
+import { CachedLogger } from 'pip-services-components-node';
+import { LogMessage } from 'pip-services-components-node';
 import { ConfigParams } from 'pip-services-commons-node';
 export declare class CloudWatchLogger extends CachedLogger implements IReferenceable, IOpenable {
     private _timer;
@@ -18,7 +19,7 @@ export declare class CloudWatchLogger extends CachedLogger implements IReference
     configure(config: ConfigParams): void;
     setReferences(references: IReferences): void;
     protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void;
-    isOpened(): boolean;
+    isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
     private formatMessageText(message);

@@ -35,10 +35,10 @@
         "docgen": "typedoc --out doc/api src --mode file --excludeExternals --target ES6 --ignoreCompilerErrors"
     },
     "dependencies": {
-        "pip-services-commons-node": "^2.0.0",
+        "pip-services-commons-node": "^3.0.0",
         "pip-services-components-node": "^3.0.0",
         "pip-services-container-node": "^3.0.1",
-        "pip-services-net-node": "^2.9.1"
+        "pip-services-rpc-node": "^3.0.0"
     },
     "devDependencies": {
         "@types/node": "*",

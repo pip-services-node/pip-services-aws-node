@@ -1,6 +1,6 @@
 import { ConfigParams } from 'pip-services-commons-node';
 import { References } from 'pip-services-commons-node';
-import { ContextInfo } from 'pip-services-commons-node';
+import { ContextInfo } from 'pip-services-components-node';
 import { Descriptor } from 'pip-services-commons-node';
 
 import { CloudWatchCounters } from '../../src/count/CloudWatchCounters';
@@ -14,7 +14,7 @@ suite('CloudWatchCounters', ()=> {
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
 
-    if (AWS_ACCESS_ID == "" || AWS_ACCESS_KEY == "")
+    if (!AWS_REGION || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
         return;
 
     setup((done) => {
@@ -37,7 +37,7 @@ suite('CloudWatchCounters', ()=> {
 
         var references = References.fromTuples(
             new Descriptor("pip-services", "context-info", "default", "default", "1.0"), contextInfo,
-            new Descriptor("pip-services", "counters", "prometheus", "default", "1.0"), _counters
+            new Descriptor("pip-services", "counters", "cloudwatch", "default", "1.0"), _counters
         );
         _counters.setReferences(references);
 

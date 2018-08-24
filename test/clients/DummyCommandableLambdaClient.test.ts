@@ -9,7 +9,7 @@ let awsAccessKey = process.env['AWS_ACCESS_KEY'];
 let lambdaArn = process.env['LAMBDA_ARN'];
 
 suite('DummyCommandableLambdaClient', ()=> {
-    if (awsAccessId == '' || lambdaArn == '')
+    if (!awsAccessId || !awsAccessKey || !lambdaArn)
         return;
 
     let lambdaConfig = ConfigParams.fromTuples(

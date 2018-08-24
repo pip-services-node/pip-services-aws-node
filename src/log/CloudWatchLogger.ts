@@ -1,15 +1,18 @@
 let async = require('async');
 
-import { IReferenceable, LogLevel } from 'pip-services-commons-node';
+import { IReferenceable } from 'pip-services-commons-node';
+import { LogLevel } from 'pip-services-components-node';
 import { IReferences } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
-import { CachedLogger } from 'pip-services-commons-node';
-import { LogMessage } from 'pip-services-commons-node';
+import { CachedLogger } from 'pip-services-components-node';
+import { LogMessage } from 'pip-services-components-node';
 import { ConfigException } from 'pip-services-commons-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { AwsConnectionResolver } from '../connect';
 import { AwsConnectionParams } from '../connect';
-import { CompositeLogger } from 'pip-services-commons-node';
+import { CompositeLogger } from 'pip-services-components-node';
+import { ContextInfo } from 'pip-services-components-node';
+import { Descriptor } from 'pip-services-commons-node'
 
 export class CloudWatchLogger extends CachedLogger implements IReferenceable, IOpenable {
 
@@ -43,6 +46,13 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         super.setReferences(references);
         this._logger.setReferences(references);
         this._connectionResolver.setReferences(references);
+
+        let contextInfo = references.getOneOptional<ContextInfo>(
+            new Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        if (contextInfo != null && this._stream == null)
+            this._stream = contextInfo.name;
+        if (contextInfo != null && this._group == null)
+            this._group = contextInfo.contextId;
     }
 
     protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
@@ -53,12 +63,12 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         super.write(level, correlationId, ex, message);
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return this._timer != null;
     }
 
     public open(correlationId: string, callback: (err: any) => void): void {
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             callback(null);
             return;
         }
@@ -178,7 +188,7 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
     }
 
     protected save(messages: LogMessage[], callback: (err: any) => void): void {
-        if (!this.isOpened() || messages == null || messages.length == 0) {
+        if (!this.isOpen() || messages == null || messages.length == 0) {
             if (callback) callback(null);
             return;
         }
@@ -209,6 +219,8 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         this._client.putLogEvents(params, (err, data) => {
             if (err) {
                 if (this._logger) this._logger.error("cloudwatch_logger", err, "putLogEvents error");
+            } else {
+                this._lastToken = data.nextSequenceToken;
             }
         });
     }

@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let async = require('async');
+const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
 const connect_1 = require("../connect");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
-class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
+const pip_services_components_node_2 = require("pip-services-components-node");
+const pip_services_commons_node_2 = require("pip-services-commons-node");
+class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
     constructor() {
         super();
         this._connectionResolver = new connect_1.AwsConnectionResolver();
@@ -14,7 +15,7 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
         this._group = "undefined";
         this._stream = null;
         this._lastToken = null;
-        this._logger = new pip_services_commons_node_3.CompositeLogger();
+        this._logger = new pip_services_components_node_2.CompositeLogger();
     }
     configure(config) {
         super.configure(config);
@@ -27,6 +28,11 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
         super.setReferences(references);
         this._logger.setReferences(references);
         this._connectionResolver.setReferences(references);
+        let contextInfo = references.getOneOptional(new pip_services_commons_node_2.Descriptor("pip-services", "context-info", "default", "*", "1.0"));
+        if (contextInfo != null && this._stream == null)
+            this._stream = contextInfo.name;
+        if (contextInfo != null && this._group == null)
+            this._group = contextInfo.contextId;
     }
     write(level, correlationId, ex, message) {
         if (this._level < level) {
@@ -34,11 +40,11 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
         }
         super.write(level, correlationId, ex, message);
     }
-    isOpened() {
+    isOpen() {
         return this._timer != null;
     }
     open(correlationId, callback) {
-        if (this.isOpened()) {
+        if (this.isOpen()) {
             callback(null);
             return;
         }
@@ -140,13 +146,13 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
         return result;
     }
     save(messages, callback) {
-        if (!this.isOpened() || messages == null || messages.length == 0) {
+        if (!this.isOpen() || messages == null || messages.length == 0) {
             if (callback)
                 callback(null);
             return;
         }
         if (this._client == null) {
-            let err = new pip_services_commons_node_2.ConfigException("cloudwatch_logger", 'NOT_OPENED', 'CloudWatchLogger is not opened');
+            let err = new pip_services_commons_node_1.ConfigException("cloudwatch_logger", 'NOT_OPENED', 'CloudWatchLogger is not opened');
             if (err != null) {
                 callback(err);
                 return;
@@ -169,6 +175,9 @@ class CloudWatchLogger extends pip_services_commons_node_1.CachedLogger {
             if (err) {
                 if (this._logger)
                     this._logger.error("cloudwatch_logger", err, "putLogEvents error");
+            }
+            else {
+                this._lastToken = data.nextSequenceToken;
             }
         });
     }

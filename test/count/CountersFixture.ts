@@ -1,7 +1,7 @@
 let assert = require('chai').assert;
 
-import { CounterType } from 'pip-services-commons-node';
-import { CachedCounters } from 'pip-services-commons-node';
+import { CounterType } from 'pip-services-components-node';
+import { CachedCounters } from 'pip-services-components-node';
 
 export class CountersFixture {
     private _counters: CachedCounters;

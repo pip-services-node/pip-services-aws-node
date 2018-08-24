@@ -1,4 +1,7 @@
 import { ConfigParams } from 'pip-services-commons-node';
+import { References } from 'pip-services-commons-node';
+import { ContextInfo } from 'pip-services-components-node';
+import { Descriptor } from 'pip-services-commons-node';
 
 import { CloudWatchLogger } from '../../src/log/CloudWatchLogger';
 import { LoggerFixture } from './LoggerFixture';
@@ -11,7 +14,7 @@ suite('CloudWatchLogger', ()=> {
     let AWS_ACCESS_ID = process.env["AWS_ACCESS_ID"] || "";
     let AWS_ACCESS_KEY = process.env["AWS_ACCESS_KEY"] || "";
 
-    if (AWS_ACCESS_ID == "" || AWS_ACCESS_KEY == "")
+    if (!AWS_REGION || !AWS_ACCESS_ID || !AWS_ACCESS_KEY)
         return;
 
     setup((done) => {
@@ -21,12 +24,20 @@ suite('CloudWatchLogger', ()=> {
 
         let config = ConfigParams.fromTuples(
             "group", "TestGroup",
-            "stream", "TestStream",
             "connection.region", AWS_REGION,
             "credential.access_id", AWS_ACCESS_ID,
             "credential.access_key", AWS_ACCESS_KEY
         );
         _logger.configure(config);
+
+        var contextInfo = new ContextInfo();
+        contextInfo.name = "TestStream";
+
+        var references = References.fromTuples(
+            new Descriptor("pip-services", "context-info", "default", "default", "1.0"), contextInfo,
+            new Descriptor("pip-services", "counters", "cloudwatch", "default", "1.0"), _logger
+        );
+        _logger.setReferences(references);
 
         _logger.open(null, (err) => {
              done(err);

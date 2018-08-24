@@ -3,8 +3,6 @@
 /.idea
 *.map
 /obj/test/**/*
-/config/test_connections.json
-/config/test_connections.yaml
 /config/config.json
 /config/config.yaml
 *.local.sh

@@ -1,14 +1,15 @@
 let async = require('async');
 
-import { IReferenceable, CounterType } from 'pip-services-commons-node';
+import { IReferenceable } from 'pip-services-commons-node';
+import { CounterType } from 'pip-services-components-node';
 import { IReferences } from 'pip-services-commons-node';
 import { IOpenable } from 'pip-services-commons-node';
-import { CachedCounters, Counter } from 'pip-services-commons-node';
+import { CachedCounters, Counter } from 'pip-services-components-node';
 import { ConfigParams } from 'pip-services-commons-node';
 import { AwsConnectionResolver } from '../connect';
 import { AwsConnectionParams } from '../connect';
-import { CompositeLogger } from 'pip-services-commons-node';
-import { ContextInfo } from 'pip-services-commons-node';
+import { CompositeLogger } from 'pip-services-components-node';
+import { ContextInfo } from 'pip-services-components-node';
 import { Descriptor } from 'pip-services-commons-node';
 import { CloudWatchUnit } from './CloudWatchUnit';
 
@@ -33,8 +34,8 @@ export class CloudWatchCounters extends CachedCounters implements IReferenceable
         super.configure(config);
         this._connectionResolver.configure(config);
 
-        this._source = config.getAsStringWithDefault('soruce', this._source);
-        this._instance = config.getAsStringWithDefault('group', this._instance);
+        this._source = config.getAsStringWithDefault('source', this._source);
+        this._instance = config.getAsStringWithDefault('instance', this._instance);
         this._connectTimeout = config.getAsIntegerWithDefault("options.connect_timeout", this._connectTimeout);
     }
 
@@ -50,7 +51,7 @@ export class CloudWatchCounters extends CachedCounters implements IReferenceable
             this._instance = contextInfo.contextId;
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return this._opened;
     }
 
