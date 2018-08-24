@@ -22,6 +22,6 @@ export declare class CloudWatchLogger extends CachedLogger implements IReference
     isOpen(): boolean;
     open(correlationId: string, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
-    private formatMessageText(message);
+    private formatMessageText;
     protected save(messages: LogMessage[], callback: (err: any) => void): void;
 }
