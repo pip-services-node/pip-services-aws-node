@@ -118,7 +118,7 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
                     if (err) {
                         if (err.code == "ResourceAlreadyExistsException") {
 
-                            var params = {
+                            let params = {
                                 logGroupName: this._group,
                                 logStreamNamePrefix: this._stream,
                             };
@@ -204,9 +204,9 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
 
         let events = [];
         messages.forEach(message => {
-            events.push({ 
-                timestamp: message.time.getTime(), 
-                message: this.formatMessageText(message) 
+            events.push({
+                timestamp: message.time.getTime(),
+                message: this.formatMessageText(message)
             });
         });
 
@@ -216,12 +216,32 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
             logStreamName: this._stream,
             sequenceToken: this._lastToken
         };
-        this._client.putLogEvents(params, (err, data) => {
-            if (err) {
-                if (this._logger) this._logger.error("cloudwatch_logger", err, "putLogEvents error");
-            } else {
-                this._lastToken = data.nextSequenceToken;
+
+
+        async.series([
+            (callback) => {
+                // get token again if saving log from another container
+                let describeParams = {
+                    logGroupName: this._group,
+                    logStreamNamePrefix: this._stream,
+                }
+                this._client.describeLogStreams(describeParams, (err, data) => {
+                    if (data.logStreams.length > 0) {
+                        this._lastToken = data.logStreams[0].uploadSequenceToken;
+                    }
+                    callback();
+                });
+            },
+            (callback) => {
+                this._client.putLogEvents(params, (err, data) => {
+                    if (err) {
+                        if (this._logger) this._logger.error("cloudwatch_logger", err, "putLogEvents error");
+                    } else {
+                        this._lastToken = data.nextSequenceToken;
+                    }
+                    callback();
+                });
             }
-        });
+        ]);
     }
 }
