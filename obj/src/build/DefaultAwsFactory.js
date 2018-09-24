@@ -4,7 +4,16 @@ const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const CloudWatchLogger_1 = require("../log/CloudWatchLogger");
 const CloudWatchCounters_1 = require("../count/CloudWatchCounters");
+/**
+ * Creates AWS components by their descriptors.
+ *
+ * @see [[CloudWatchLogger]]
+ * @see [[CloudWatchCounters]]
+ */
 class DefaultAwsFactory extends pip_services_components_node_1.Factory {
+    /**
+     * Create a new instance of the factory.
+     */
     constructor() {
         super();
         this.registerAsType(DefaultAwsFactory.CloudWatchLoggerDescriptor, CloudWatchLogger_1.CloudWatchLogger);

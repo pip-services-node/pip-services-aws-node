@@ -6,7 +6,61 @@ const pip_services_commons_node_1 = require("pip-services-commons-node");
 const connect_1 = require("../connect");
 const pip_services_components_node_2 = require("pip-services-components-node");
 const pip_services_commons_node_2 = require("pip-services-commons-node");
+/**
+ * Logger that writes log messages to AWS Cloud Watch Log.
+ *
+ * ### Configuration parameters ###
+ *
+ * stream:                        (optional) Cloud Watch Log stream (default: context name)
+ * group:                         (optional) Cloud Watch Log group (default: context instance ID or hostname)
+ * connections:
+ *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *   region:                      (optional) AWS region
+ * credentials:
+ *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *   access_id:                   AWS access/client id
+ *   access_key:                  AWS access/client id
+ * options:
+ *   interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+ *   reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ *
+ * ### References ###
+ *
+ * - *:context-info:*:*:1.0         (optional) ContextInfo to detect the context id and specify counters source
+ * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
+ * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ *
+ * @see [[Counter]]
+ * @see [[CachedCounters]]
+ * @see [[CompositeLogger]]
+ *
+ * ### Example ###
+ *
+ * let logger = new Logger();
+ * logger.config(ConfigParams.fromTuples(
+ *     "stream", "mystream",
+ *     "group", "mygroup",
+ *     "connection.region", "us-east-1",
+ *     "connection.access_id", "XXXXXXXXXXX",
+ *     "connection.access_key", "XXXXXXXXXXX"
+ * ));
+ * logger.setReferences(References.fromTuples(
+ *     new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ * ));
+ *
+ * logger.open("123", (err) => {
+ *     ...
+ * });
+ *
+ * logger.setLevel(LogLevel.debug);
+ *
+ * logger.error("123", ex, "Error occured: %s", ex.message);
+ * logger.debug("123", "Everything is OK.");
+ */
 class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
+    /**
+     * Creates a new instance of this logger.
+     */
     constructor() {
         super();
         this._connectionResolver = new connect_1.AwsConnectionResolver();
@@ -17,6 +71,11 @@ class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
         this._lastToken = null;
         this._logger = new pip_services_components_node_2.CompositeLogger();
     }
+    /**
+     * Configures component by passing configuration parameters.
+     *
+     * @param config    configuration parameters to be set.
+     */
     configure(config) {
         super.configure(config);
         this._connectionResolver.configure(config);
@@ -24,6 +83,12 @@ class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
         this._stream = config.getAsStringWithDefault('stream', this._stream);
         this._connectTimeout = config.getAsIntegerWithDefault("options.connect_timeout", this._connectTimeout);
     }
+    /**
+     * Sets references to dependent components.
+     *
+     * @param references 	references to locate the component dependencies.
+     * @see [[IReferences]]
+     */
     setReferences(references) {
         super.setReferences(references);
         this._logger.setReferences(references);
@@ -34,15 +99,34 @@ class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
         if (contextInfo != null && this._group == null)
             this._group = contextInfo.contextId;
     }
+    /**
+     * Writes a log message to the logger destination.
+     *
+     * @param level             a log level.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     */
     write(level, correlationId, ex, message) {
         if (this._level < level) {
             return;
         }
         super.write(level, correlationId, ex, message);
     }
+    /**
+     * Checks if the component is opened.
+     *
+     * @returns true if the component has been opened and false otherwise.
+     */
     isOpen() {
         return this._timer != null;
     }
+    /**
+     * Opens the component.
+     *
+     * @param correlationId 	(optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives error or null no errors occured.
+     */
     open(correlationId, callback) {
         if (this.isOpen()) {
             callback(null);
@@ -115,6 +199,12 @@ class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
             }
         ], callback);
     }
+    /**
+     * Closes component and frees used resources.
+     *
+     * @param correlationId 	(optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives error or null no errors occured.
+     */
     close(correlationId, callback) {
         this.save(this._cache, (err) => {
             if (this._timer)
@@ -145,6 +235,12 @@ class CloudWatchLogger extends pip_services_components_node_1.CachedLogger {
         }
         return result;
     }
+    /**
+     * Saves log messages from the cache.
+     *
+     * @param messages  a list with log messages
+     * @param callback  callback function that receives error or null for success.
+     */
     save(messages, callback) {
         if (!this.isOpen() || messages == null || messages.length == 0) {
             if (callback)

@@ -1,5 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Constants that determine cloud watch units.
+ */
 class CloudWatchUnit {
 }
 CloudWatchUnit.Seconds = "Seconds";

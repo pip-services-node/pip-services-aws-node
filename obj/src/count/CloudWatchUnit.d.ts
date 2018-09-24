@@ -1,3 +1,6 @@
+/**
+ * Constants that determine cloud watch units.
+ */
 export declare class CloudWatchUnit {
     static readonly Seconds: string;
     static readonly Microseconds: string;

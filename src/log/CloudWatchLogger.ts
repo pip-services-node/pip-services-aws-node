@@ -14,8 +14,58 @@ import { CompositeLogger } from 'pip-services-components-node';
 import { ContextInfo } from 'pip-services-components-node';
 import { Descriptor } from 'pip-services-commons-node'
 
+/**
+ * Logger that writes log messages to AWS Cloud Watch Log.
+ * 
+ * ### Configuration parameters ###
+ * 
+ * stream:                        (optional) Cloud Watch Log stream (default: context name)
+ * group:                         (optional) Cloud Watch Log group (default: context instance ID or hostname)
+ * connections:                   
+ *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *   region:                      (optional) AWS region
+ * credentials:    
+ *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *   access_id:                   AWS access/client id
+ *   access_key:                  AWS access/client id
+ * options:
+ *   interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
+ *   reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ * 
+ * ### References ###
+ * 
+ * - *:context-info:*:*:1.0         (optional) ContextInfo to detect the context id and specify counters source
+ * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
+ * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * 
+ * @see [[Counter]]
+ * @see [[CachedCounters]]
+ * @see [[CompositeLogger]]
+ * 
+ * ### Example ###
+ * 
+ * let logger = new Logger();
+ * logger.config(ConfigParams.fromTuples(
+ *     "stream", "mystream",
+ *     "group", "mygroup",
+ *     "connection.region", "us-east-1",
+ *     "connection.access_id", "XXXXXXXXXXX",
+ *     "connection.access_key", "XXXXXXXXXXX"
+ * ));
+ * logger.setReferences(References.fromTuples(
+ *     new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ * ));
+ * 
+ * logger.open("123", (err) => {
+ *     ...
+ * });
+ * 
+ * logger.setLevel(LogLevel.debug);
+ * 
+ * logger.error("123", ex, "Error occured: %s", ex.message);
+ * logger.debug("123", "Everything is OK.");
+ */
 export class CloudWatchLogger extends CachedLogger implements IReferenceable, IOpenable {
-
     private _timer: any;
 
     private _connectionResolver: AwsConnectionResolver = new AwsConnectionResolver();
@@ -29,10 +79,18 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
 
     private _logger: CompositeLogger = new CompositeLogger();
 
+    /**
+     * Creates a new instance of this logger.
+     */
     public constructor() {
         super();
     }
 
+    /**
+     * Configures component by passing configuration parameters.
+     * 
+     * @param config    configuration parameters to be set.
+     */
     public configure(config: ConfigParams): void {
         super.configure(config);
         this._connectionResolver.configure(config);
@@ -42,6 +100,12 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         this._connectTimeout = config.getAsIntegerWithDefault("options.connect_timeout", this._connectTimeout);
     }
 
+	/**
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
+	 * @see [[IReferences]]
+	 */
     public setReferences(references: IReferences): void {
         super.setReferences(references);
         this._logger.setReferences(references);
@@ -55,6 +119,14 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
             this._group = contextInfo.contextId;
     }
 
+    /**
+     * Writes a log message to the logger destination.
+     * 
+     * @param level             a log level.
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param error             an error object associated with this message.
+     * @param message           a human-readable message to log.
+     */
     protected write(level: LogLevel, correlationId: string, ex: Error, message: string): void {
         if (this._level < level) {
             return;
@@ -63,10 +135,21 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         super.write(level, correlationId, ex, message);
     }
 
+	/**
+	 * Checks if the component is opened.
+	 * 
+	 * @returns true if the component has been opened and false otherwise.
+	 */
     public isOpen(): boolean {
         return this._timer != null;
     }
 
+	/**
+	 * Opens the component.
+	 * 
+	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives error or null no errors occured.
+	 */
     public open(correlationId: string, callback: (err: any) => void): void {
         if (this.isOpen()) {
             callback(null);
@@ -152,6 +235,12 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
 
     }
 
+	/**
+	 * Closes component and frees used resources.
+	 * 
+	 * @param correlationId 	(optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives error or null no errors occured.
+	 */
     public close(correlationId: string, callback: (err: any) => void): void {
         this.save(this._cache, (err) => {
             if (this._timer)
@@ -187,6 +276,12 @@ export class CloudWatchLogger extends CachedLogger implements IReferenceable, IO
         return result;
     }
 
+    /**
+     * Saves log messages from the cache.
+     * 
+     * @param messages  a list with log messages
+     * @param callback  callback function that receives error or null for success.
+     */
     protected save(messages: LogMessage[], callback: (err: any) => void): void {
         if (!this.isOpen() || messages == null || messages.length == 0) {
             if (callback) callback(null);
