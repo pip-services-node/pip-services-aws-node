@@ -1,4 +1,7 @@
+/** @module container */
+/** @hidden */ 
 let _ = require('lodash');
+/** @hidden */ 
 let process = require('process');
 
 import { ConfigParams } from 'pip-services-commons-node';

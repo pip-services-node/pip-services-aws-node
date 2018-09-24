@@ -54,7 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="awsconnectionparams.html">AwsConnectionParams</a>
+					<a href="../modules/connect.html">connect</a>
+				</li>
+				<li>
+					<a href="connect.awsconnectionparams.html">AwsConnectionParams</a>
 				</li>
 			</ul>
 			<h1>Class AwsConnectionParams</h1>
@@ -64,6 +67,39 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Contains connection parameters to authenticate against Amazon Web Services (AWS)
+						and connect to specific AWS resource.</p>
+					</div>
+					<p>The class is able to compose and parse AWS resource ARNs.</p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<p>access_id:     application access id
+						client_id:     alternative to access_id
+						access_key:    application secret key
+						client_key:    alternative to access_key
+					secret_key:    alternative to access_key</p>
+					<p>In addition to standard parameters CredentialParams may contain any number of custom parameters</p>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p><a href="connect.awsconnectionresolver.html">AwsConnectionResolver</a></p>
+							<h3 id="example">Example</h3>
+							<p>let connection = AwsConnectionParams.fromTuples(
+								&quot;region&quot;, &quot;us-east-1&quot;,
+								&quot;access_id&quot;, &quot;XXXXXXXXXXXXXXX&quot;,
+								&quot;secret_key&quot;, &quot;XXXXXXXXXXXXXXX&quot;,
+								&quot;service&quot;, &quot;s3&quot;,
+								&quot;bucket&quot;, &quot;mybucket&quot;
+							);</p>
+							<p>let region = connection.getRegion();                     // Result: &quot;us-east-1&quot;
+								let accessId = connection.getAccessId();                 // Result: &quot;XXXXXXXXXXXXXXX&quot;
+								let secretKey = connection.getAccessKey();               // Result: &quot;XXXXXXXXXXXXXXX&quot;
+							let pin = connection.getAsNullableString(&quot;bucket&quot;);      // Result: &quot;mybucket&quot;</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -84,85 +120,85 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="awsconnectionparams.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="connect.awsconnectionparams.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#addsection" class="tsd-kind-icon">add<wbr>Section</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#append" class="tsd-kind-icon">append</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#clear" class="tsd-kind-icon">clear</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#clone" class="tsd-kind-icon">clone</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getaccessid" class="tsd-kind-icon">get<wbr>Access<wbr>Id</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getaccesskey" class="tsd-kind-icon">get<wbr>Access<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getaccount" class="tsd-kind-icon">get<wbr>Account</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getarn" class="tsd-kind-icon">get<wbr>Arn</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasarray" class="tsd-kind-icon">get<wbr>AsArray</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasarraywithdefault" class="tsd-kind-icon">get<wbr>AsArray<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasboolean" class="tsd-kind-icon">get<wbr>AsBoolean</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasbooleanwithdefault" class="tsd-kind-icon">get<wbr>AsBoolean<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasdatetime" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasdatetimewithdefault" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasdouble" class="tsd-kind-icon">get<wbr>AsDouble</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasdoublewithdefault" class="tsd-kind-icon">get<wbr>AsDouble<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasfloat" class="tsd-kind-icon">get<wbr>AsFloat</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasfloatwithdefault" class="tsd-kind-icon">get<wbr>AsFloat<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasinteger" class="tsd-kind-icon">get<wbr>AsInteger</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasintegerwithdefault" class="tsd-kind-icon">get<wbr>AsInteger<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getaslong" class="tsd-kind-icon">get<wbr>AsLong</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getaslongwithdefault" class="tsd-kind-icon">get<wbr>AsLong<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasmap" class="tsd-kind-icon">get<wbr>AsMap</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasmapwithdefault" class="tsd-kind-icon">get<wbr>AsMap<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullablearray" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Array</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullableboolean" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Boolean</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullabledatetime" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Date<wbr>Time</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullabledouble" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Double</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullablefloat" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Float</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullableinteger" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Integer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullablelong" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Long</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullablemap" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Map</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasnullablestring" class="tsd-kind-icon">get<wbr>AsNullable<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="awsconnectionparams.html#getasnullabletype" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasobject" class="tsd-kind-icon">get<wbr>AsObject</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasstring" class="tsd-kind-icon">get<wbr>AsString</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasstringwithdefault" class="tsd-kind-icon">get<wbr>AsString<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="awsconnectionparams.html#getastype" class="tsd-kind-icon">get<wbr>AsType</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="awsconnectionparams.html#getastypewithdefault" class="tsd-kind-icon">get<wbr>AsType<wbr>With<wbr>Default</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getasvalue" class="tsd-kind-icon">get<wbr>AsValue</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getkeys" class="tsd-kind-icon">get<wbr>Keys</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getpartition" class="tsd-kind-icon">get<wbr>Partition</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getregion" class="tsd-kind-icon">get<wbr>Region</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getresource" class="tsd-kind-icon">get<wbr>Resource</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getresourcetype" class="tsd-kind-icon">get<wbr>Resource<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getsection" class="tsd-kind-icon">get<wbr>Section</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#getsectionnames" class="tsd-kind-icon">get<wbr>Section<wbr>Names</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#getservice" class="tsd-kind-icon">get<wbr>Service</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#length" class="tsd-kind-icon">length</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#override" class="tsd-kind-icon">override</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#put" class="tsd-kind-icon">put</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#remove" class="tsd-kind-icon">remove</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setaccessid" class="tsd-kind-icon">set<wbr>Access<wbr>Id</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setaccesskey" class="tsd-kind-icon">set<wbr>Access<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setaccount" class="tsd-kind-icon">set<wbr>Account</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setarn" class="tsd-kind-icon">set<wbr>Arn</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#setasobject" class="tsd-kind-icon">set<wbr>AsObject</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#setdefaults" class="tsd-kind-icon">set<wbr>Defaults</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setpartition" class="tsd-kind-icon">set<wbr>Partition</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setregion" class="tsd-kind-icon">set<wbr>Region</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setresource" class="tsd-kind-icon">set<wbr>Resource</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setresourcetype" class="tsd-kind-icon">set<wbr>Resource<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#setservice" class="tsd-kind-icon">set<wbr>Service</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="awsconnectionparams.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="awsconnectionparams.html#validate" class="tsd-kind-icon">validate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="awsconnectionparams.html#fromconfig" class="tsd-kind-icon">from<wbr>Config</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="awsconnectionparams.html#frommaps" class="tsd-kind-icon">from<wbr>Maps</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="awsconnectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="awsconnectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="awsconnectionparams.html#fromtuplesarray" class="tsd-kind-icon">from<wbr>Tuples<wbr>Array</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="awsconnectionparams.html#fromvalue" class="tsd-kind-icon">from<wbr>Value</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="awsconnectionparams.html#mergeconfigs" class="tsd-kind-icon">merge<wbr>Configs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#addsection" class="tsd-kind-icon">add<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#append" class="tsd-kind-icon">append</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#clear" class="tsd-kind-icon">clear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#clone" class="tsd-kind-icon">clone</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getaccessid" class="tsd-kind-icon">get<wbr>Access<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getaccesskey" class="tsd-kind-icon">get<wbr>Access<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getaccount" class="tsd-kind-icon">get<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getarn" class="tsd-kind-icon">get<wbr>Arn</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasarray" class="tsd-kind-icon">get<wbr>AsArray</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasarraywithdefault" class="tsd-kind-icon">get<wbr>AsArray<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasboolean" class="tsd-kind-icon">get<wbr>AsBoolean</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasbooleanwithdefault" class="tsd-kind-icon">get<wbr>AsBoolean<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasdatetime" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasdatetimewithdefault" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasdouble" class="tsd-kind-icon">get<wbr>AsDouble</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasdoublewithdefault" class="tsd-kind-icon">get<wbr>AsDouble<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasfloat" class="tsd-kind-icon">get<wbr>AsFloat</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasfloatwithdefault" class="tsd-kind-icon">get<wbr>AsFloat<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasinteger" class="tsd-kind-icon">get<wbr>AsInteger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasintegerwithdefault" class="tsd-kind-icon">get<wbr>AsInteger<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getaslong" class="tsd-kind-icon">get<wbr>AsLong</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getaslongwithdefault" class="tsd-kind-icon">get<wbr>AsLong<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasmap" class="tsd-kind-icon">get<wbr>AsMap</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasmapwithdefault" class="tsd-kind-icon">get<wbr>AsMap<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullablearray" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullableboolean" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Boolean</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullabledatetime" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Date<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullabledouble" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Double</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullablefloat" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Float</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullableinteger" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Integer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullablelong" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Long</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullablemap" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Map</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullablestring" class="tsd-kind-icon">get<wbr>AsNullable<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasnullabletype" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasobject" class="tsd-kind-icon">get<wbr>AsObject</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasstring" class="tsd-kind-icon">get<wbr>AsString</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasstringwithdefault" class="tsd-kind-icon">get<wbr>AsString<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="connect.awsconnectionparams.html#getastype" class="tsd-kind-icon">get<wbr>AsType</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="connect.awsconnectionparams.html#getastypewithdefault" class="tsd-kind-icon">get<wbr>AsType<wbr>With<wbr>Default</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getasvalue" class="tsd-kind-icon">get<wbr>AsValue</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getkeys" class="tsd-kind-icon">get<wbr>Keys</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getpartition" class="tsd-kind-icon">get<wbr>Partition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getregion" class="tsd-kind-icon">get<wbr>Region</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getresource" class="tsd-kind-icon">get<wbr>Resource</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getresourcetype" class="tsd-kind-icon">get<wbr>Resource<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getsection" class="tsd-kind-icon">get<wbr>Section</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#getsectionnames" class="tsd-kind-icon">get<wbr>Section<wbr>Names</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#getservice" class="tsd-kind-icon">get<wbr>Service</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#length" class="tsd-kind-icon">length</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#override" class="tsd-kind-icon">override</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#put" class="tsd-kind-icon">put</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setaccessid" class="tsd-kind-icon">set<wbr>Access<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setaccesskey" class="tsd-kind-icon">set<wbr>Access<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setaccount" class="tsd-kind-icon">set<wbr>Account</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setarn" class="tsd-kind-icon">set<wbr>Arn</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#setasobject" class="tsd-kind-icon">set<wbr>AsObject</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#setdefaults" class="tsd-kind-icon">set<wbr>Defaults</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setpartition" class="tsd-kind-icon">set<wbr>Partition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setregion" class="tsd-kind-icon">set<wbr>Region</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setresource" class="tsd-kind-icon">set<wbr>Resource</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setresourcetype" class="tsd-kind-icon">set<wbr>Resource<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#setservice" class="tsd-kind-icon">set<wbr>Service</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="connect.awsconnectionparams.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="connect.awsconnectionparams.html#validate" class="tsd-kind-icon">validate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="connect.awsconnectionparams.html#fromconfig" class="tsd-kind-icon">from<wbr>Config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="connect.awsconnectionparams.html#frommaps" class="tsd-kind-icon">from<wbr>Maps</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="connect.awsconnectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="connect.awsconnectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="connect.awsconnectionparams.html#fromtuplesarray" class="tsd-kind-icon">from<wbr>Tuples<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="connect.awsconnectionparams.html#fromvalue" class="tsd-kind-icon">from<wbr>Value</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="connect.awsconnectionparams.html#mergeconfigs" class="tsd-kind-icon">merge<wbr>Configs</a></li>
 							</ul>
 						</section>
 					</div>
@@ -174,23 +210,33 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Aws<wbr>Connection<wbr>Params<span class="tsd-signature-symbol">(</span>values<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Aws<wbr>Connection<wbr>Params<span class="tsd-signature-symbol">(</span>values<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.__constructor</p>
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:7</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L41">connect/AwsConnectionParams.ts:41</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an new instance of the connection parameters.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> values: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>(optional) an object to be converted into key-value pairs to initialize this connection.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -208,7 +254,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ConfigParams.addSection</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:61</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:61</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +294,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.append</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:49</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:50</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -277,7 +323,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.clear</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:51</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:52</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,7 +346,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.clone</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:333</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:334</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -321,7 +367,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.get</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:34</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:35</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,10 +396,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:109</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L226">connect/AwsConnectionParams.ts:226</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS access id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS access id.</p>
 						</li>
 					</ul>
 				</section>
@@ -367,10 +419,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:117</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L244">connect/AwsConnectionParams.ts:244</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS client key.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS client key.</p>
 						</li>
 					</ul>
 				</section>
@@ -384,10 +442,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:37</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L111">connect/AwsConnectionParams.ts:111</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS account id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS account id.</p>
 						</li>
 					</ul>
 				</section>
@@ -401,10 +465,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:61</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L166">connect/AwsConnectionParams.ts:166</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS resource ARN.
+									If the ARN is not defined it automatically generates it from other properties.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS resource ARN.</p>
 						</li>
 					</ul>
 				</section>
@@ -419,16 +490,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsArray</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:289</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:290</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>AnyValueArray</p>
+									<dd><p>[[AnyValueArray]]</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>AnyValueArray#fromValue</p>
+									<dd><p>[[AnyValueArray.fromValue]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -457,16 +528,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsArrayWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:300</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:301</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>AnyValueArray</p>
+									<dd><p>[[AnyValueArray]]</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>#getAsNullableArray</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasnullablearray">getAsNullableArray</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -503,13 +574,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsBoolean</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:106</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:107</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsBooleanWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasbooleanwithdefault">getAsBooleanWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -538,13 +609,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsBooleanWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:115</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:116</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>BooleanConverter#toBooleanWithDefault</p>
+									<dd><p>[[BooleanConverter.toBooleanWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -559,13 +630,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 							<p>the item with the given key as a boolean or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -580,13 +651,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsDateTime</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:221</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:222</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsDateTimeWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasdatetimewithdefault">getAsDateTimeWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -615,13 +686,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsDateTimeWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:230</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:231</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>DateTimeConverter#toDateTimeWithDefault</p>
+									<dd><p>[[DateTimeConverter.toDateTimeWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -636,13 +707,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">Date</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Date</span></h4>
 							<p>the item with the given key as a Datetime or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -657,13 +728,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsDouble</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:198</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:199</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsDoubleWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasdoublewithdefault">getAsDoubleWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -692,13 +763,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsDoubleWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:207</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:208</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>DoubleConverter#toDoubleWithDefault</p>
+									<dd><p>[[DoubleConverter.toDoubleWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -713,13 +784,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>the item with the given key as a double or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -734,13 +805,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsFloat</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:175</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:176</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsFloatWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasfloatwithdefault">getAsFloatWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -769,13 +840,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsFloatWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:184</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:185</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>FloatConverter#toFloatWithDefault</p>
+									<dd><p>[[FloatConverter.toFloatWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -790,13 +861,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>the item with the given key as a float or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -811,13 +882,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsInteger</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:129</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:130</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsIntegerWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasintegerwithdefault">getAsIntegerWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -846,13 +917,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsIntegerWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:138</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:139</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>IntegerConverter#toIntegerWithDefault</p>
+									<dd><p>[[IntegerConverter.toIntegerWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -867,13 +938,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>the item with the given key as an integer or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -888,13 +959,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsLong</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:152</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:153</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsLongWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getaslongwithdefault">getAsLongWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -923,13 +994,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsLongWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:161</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:162</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>LongConverter#toLongWithDefault</p>
+									<dd><p>[[LongConverter.toLongWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -944,13 +1015,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>the item with the given key as a long or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -965,13 +1036,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsMap</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:315</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:316</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#fromValue</p>
+									<dd><p><a href="connect.awsconnectionparams.html#fromvalue">fromValue</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1000,13 +1071,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsMapWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:325</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:326</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsNullableMap</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasnullablemap">getAsNullableMap</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1043,16 +1114,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableArray</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:281</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:282</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>AnyValueArray</p>
+									<dd><p>[[AnyValueArray]]</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>AnyValueArray#fromValue</p>
+									<dd><p>[[AnyValueArray.fromValue]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1082,13 +1153,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableBoolean</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:99</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:100</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>BooleanConverter#toNullableBoolean</p>
+									<dd><p>[[BooleanConverter.toNullableBoolean]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1117,13 +1188,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableDateTime</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:214</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:215</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>DateTimeConverter#toNullableDateTime</p>
+									<dd><p>[[DateTimeConverter.toNullableDateTime]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1152,13 +1223,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableDouble</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:191</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:192</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>DoubleConverter#toNullableDouble</p>
+									<dd><p>[[DoubleConverter.toNullableDouble]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1187,13 +1258,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableFloat</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:168</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:169</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>FloatConverter#toNullableFloat</p>
+									<dd><p>[[FloatConverter.toNullableFloat]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1222,13 +1293,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableInteger</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:122</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:123</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>IntegerConverter#toNullableInteger</p>
+									<dd><p>[[IntegerConverter.toNullableInteger]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1257,13 +1328,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableLong</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:145</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:146</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>LongConverter#toNullableLong</p>
+									<dd><p>[[LongConverter.toNullableLong]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1292,13 +1363,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableMap</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:308</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:309</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#fromValue</p>
+									<dd><p><a href="connect.awsconnectionparams.html#fromvalue">fromValue</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1328,13 +1399,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableString</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:76</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:77</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>StringConverter#toNullableString</p>
+									<dd><p>[[StringConverter.toNullableString]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1363,17 +1434,17 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsNullableType</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:241</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:242</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Converts the item with the given key into a nullable object of type &#39;type&#39; using
-									{@link TypeConverter#toNullableType<T>} and returns it.</p>
+									[[TypeConverter.toNullableType]] and returns it.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>TypeConverter#toNullableType<T></p>
+									<dd><p>[[TypeConverter.toNullableType]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1414,7 +1485,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsObject</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:59</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:60</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1430,7 +1501,7 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 							<p>the item with the given key without any conversions or
-							all items, if &#39;key&#39; is undefined or omitted.</p>
+							all items (if &#39;key&#39; is undefined or omitted).</p>
 						</li>
 					</ul>
 				</section>
@@ -1445,13 +1516,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsString</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:83</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:84</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsStringWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getasstringwithdefault">getAsStringWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1480,13 +1551,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsStringWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:92</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:93</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>StringConverter#toStringWithDefault</p>
+									<dd><p>[[StringConverter.toStringWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1501,13 +1572,13 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 							<p>the item with the given key as a string or the
-							defaultValue, if conversion is not possible.</p>
+							defaultValue (if conversion is not possible).</p>
 						</li>
 					</ul>
 				</section>
@@ -1522,17 +1593,17 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsType</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:252</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:253</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Converts the item with the given key into an object of type &#39;type&#39; using
-									{@link TypeConverter#toTypeWithDefault<T>} and returns it.</p>
+									[[TypeConverter.toTypeWithDefault]] and returns it.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#getAsTypeWithDefault</p>
+									<dd><p><a href="connect.awsconnectionparams.html#getastypewithdefault">getAsTypeWithDefault</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1573,17 +1644,17 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsTypeWithDefault</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:264</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:265</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Converts the item with the given key into an object of type &#39;type&#39; using
-									{@link TypeConverter#toTypeWithDefault<T>} and returns it.</p>
+									[[TypeConverter.toTypeWithDefault]] and returns it.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>TypeConverter#toTypeWithDefault<T></p>
+									<dd><p>[[TypeConverter.toTypeWithDefault]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1607,7 +1678,7 @@
 								<li>
 									<h5>defaultValue: <span class="tsd-signature-type">T</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>value to return, if conversion is not possible.</p>
+										<p>value to return if conversion is not possible.</p>
 									</div>
 								</li>
 							</ul>
@@ -1628,16 +1699,16 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getAsValue</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:272</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:273</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>AnyValue</p>
+									<dd><p>[[AnyValue]]</p>
 									</dd>
 									<dt>see</dt>
-									<dd><p>AnyValue#AnyValue</p>
+									<dd><p>[[AnyValue.constructor]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -1666,7 +1737,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.getKeys</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:36</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:37</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1686,10 +1757,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:13</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L57">connect/AwsConnectionParams.ts:57</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS partition name.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS partition name.</p>
 						</li>
 					</ul>
 				</section>
@@ -1703,10 +1780,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:29</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L93">connect/AwsConnectionParams.ts:93</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS region.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS region.</p>
 						</li>
 					</ul>
 				</section>
@@ -1720,10 +1803,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:53</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L147">connect/AwsConnectionParams.ts:147</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS resource id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS resource id.</p>
 						</li>
 					</ul>
 				</section>
@@ -1737,10 +1826,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:45</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L129">connect/AwsConnectionParams.ts:129</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS resource type.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS resource type.</p>
 						</li>
 					</ul>
 				</section>
@@ -1755,7 +1850,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ConfigParams.getSection</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:52</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:52</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1788,7 +1883,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ConfigParams.getSectionNames</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:43</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:43</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1809,10 +1904,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:21</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L75">connect/AwsConnectionParams.ts:75</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the AWS service name.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the AWS service name.</p>
 						</li>
 					</ul>
 				</section>
@@ -1827,7 +1928,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.length</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:53</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:54</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1848,7 +1949,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ConfigParams.override</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:72</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:73</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1859,7 +1960,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#setDefaults</p>
+									<dd><p><a href="connect.awsconnectionparams.html#setdefaults">setDefaults</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -1889,7 +1990,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.put</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:41</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:42</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1924,7 +2025,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.remove</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:45</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:46</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1952,13 +2053,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:113</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L235">connect/AwsConnectionParams.ts:235</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS access id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the AWS access id.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1975,13 +2084,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:121</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L253">connect/AwsConnectionParams.ts:253</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS client key.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS client key.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1998,13 +2115,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:41</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L120">connect/AwsConnectionParams.ts:120</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS account id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the AWS account id.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2021,13 +2146,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:83</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L195">connect/AwsConnectionParams.ts:195</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS resource ARN.
+										When it sets the value, it automatically parses the ARN
+									and sets individual parameters.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS resource ARN.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2045,13 +2180,13 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.setAsObject</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:69</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:70</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>MapConverter#toMap</p>
+									<dd><p>[[MapConverter.toMap]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -2088,7 +2223,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ConfigParams.setDefaults</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:83</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:85</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2100,7 +2235,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>#override</p>
+									<dd><p><a href="connect.awsconnectionparams.html#override">override</a></p>
 									</dd>
 								</dl>
 							</div>
@@ -2109,12 +2244,12 @@
 								<li>
 									<h5>defaultConfigParams: <span class="tsd-signature-type">ConfigParams</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>default configuration parameters (ConfigParams object).</p>
+										<p>the default configuration parameters to use.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigParams</span></h4>
-							<p>ConfigParams object with newly set defaults.</p>
+							<p>this ConfigParams object with the newly set defaults.</p>
 						</li>
 					</ul>
 				</section>
@@ -2128,13 +2263,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:17</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L66">connect/AwsConnectionParams.ts:66</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS partition name.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS partition name.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2151,13 +2294,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:33</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L102">connect/AwsConnectionParams.ts:102</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS region.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS region.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2174,13 +2325,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:57</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L156">connect/AwsConnectionParams.ts:156</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS resource id.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS resource id.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2197,13 +2356,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:49</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L138">connect/AwsConnectionParams.ts:138</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS resource type.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS resource type.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2220,13 +2387,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:25</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L84">connect/AwsConnectionParams.ts:84</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets the AWS service name.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a new AWS service name.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2244,7 +2419,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.toString</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:331</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:332</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2265,16 +2440,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:130</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L275">connect/AwsConnectionParams.ts:275</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Validates this connection parameters</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigException</span></h4>
+							<p>a ConfigException or null if validation passed successfully.</p>
 						</li>
 					</ul>
 				</section>
@@ -2282,22 +2466,37 @@
 					<a name="fromconfig" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>Config</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>Config<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
+						<li class="tsd-signature tsd-kind-icon">from<wbr>Config<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:157</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L311">connect/AwsConnectionParams.ts:311</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves AwsConnectionParams from configuration parameters.
+									The values are retrieves from &quot;connection&quot; and &quot;credential&quot; sections.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="connect.awsconnectionparams.html#mergeconfigs">mergeConfigs</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>config: <span class="tsd-signature-type">ConfigParams</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>configuration parameters</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<p>the generated AwsConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
@@ -2312,7 +2511,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.fromMaps</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:373</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:374</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2338,23 +2537,33 @@
 					<a name="fromstring" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> from<wbr>String</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">from<wbr>String<span class="tsd-signature-symbol">(</span>line<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
+						<li class="tsd-signature tsd-kind-icon">from<wbr>String<span class="tsd-signature-symbol">(</span>line<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.fromString</p>
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:125</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L264">connect/AwsConnectionParams.ts:264</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new AwsConnectionParams object filled with key-value pairs serialized as a string.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>line: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a string with serialized key-value pairs as &quot;key1=value1;key2=value2;...&quot;
+										Example: &quot;Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z&quot;</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<p>a new AwsConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
@@ -2370,16 +2579,16 @@
 								<p>Inherited from ConfigParams.fromTuples</p>
 								<p>Overrides StringValueMap.fromTuples</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:102</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:104</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Static method that creates a ConfigParams object from an array of tuples.</p>
+									<p>Static method that creates a ConfigParams object using the tuples passed to the method.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>StringValueMap#fromTuplesArray</p>
+									<dd><p>[[StringValueMap.fromTuplesArray]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -2388,12 +2597,12 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>tuples: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>configuration parameters in the form of an array of tuples.</p>
+										<p>the tuples to convert to a ConfigParams object.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ConfigParams</span></h4>
-							<p>generated ConfigParams.</p>
+							<p>the generated ConfigParams.</p>
 						</li>
 					</ul>
 				</section>
@@ -2408,7 +2617,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from StringValueMap.fromTuplesArray</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:358</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/data/StringValueMap.d.ts:359</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2442,7 +2651,7 @@
 								<p>Inherited from ConfigParams.fromValue</p>
 								<p>Overrides StringValueMap.fromValue</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:93</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-commons-node/obj/src/config/ConfigParams.d.ts:95</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2452,7 +2661,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>RecursiveObjectReader#getProperties</p>
+									<dd><p>[[RecursiveObjectReader.getProperties]]</p>
 									</dd>
 								</dl>
 							</div>
@@ -2474,23 +2683,38 @@
 					<a name="mergeconfigs" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> merge<wbr>Configs</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">merge<wbr>Configs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>configs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
+						<li class="tsd-signature tsd-kind-icon">merge<wbr>Configs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>configs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.mergeConfigs</p>
 								<ul>
-									<li>Defined in connect/AwsConnectionParams.ts:171</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L334">connect/AwsConnectionParams.ts:334</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves AwsConnectionParams from multiple configuration parameters.
+									The values are retrieves from &quot;connection&quot; and &quot;credential&quot; sections.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="connect.awsconnectionparams.html#fromconfig">fromConfig</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>configs: <span class="tsd-signature-type">ConfigParams</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a list with configuration parameters</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="connect.awsconnectionparams.html" class="tsd-signature-type">AwsConnectionParams</a></h4>
+							<p>the generated AwsConnectionParams object.</p>
 						</li>
 					</ul>
 				</section>
@@ -2502,264 +2726,264 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/build.html">build</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/clients.html">clients</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/connect.html">connect</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/container.html">container</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/count.html">count</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/log.html">log</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="awsconnectionparams.html" class="tsd-kind-icon">Aws<wbr>Connection<wbr>Params</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="connect.awsconnectionparams.html" class="tsd-kind-icon">Aws<wbr>Connection<wbr>Params</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="awsconnectionparams.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="connect.awsconnectionparams.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#addsection" class="tsd-kind-icon">add<wbr>Section</a>
+								<a href="connect.awsconnectionparams.html#addsection" class="tsd-kind-icon">add<wbr>Section</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#append" class="tsd-kind-icon">append</a>
+								<a href="connect.awsconnectionparams.html#append" class="tsd-kind-icon">append</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#clear" class="tsd-kind-icon">clear</a>
+								<a href="connect.awsconnectionparams.html#clear" class="tsd-kind-icon">clear</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#clone" class="tsd-kind-icon">clone</a>
+								<a href="connect.awsconnectionparams.html#clone" class="tsd-kind-icon">clone</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#get" class="tsd-kind-icon">get</a>
+								<a href="connect.awsconnectionparams.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getaccessid" class="tsd-kind-icon">get<wbr>Access<wbr>Id</a>
+								<a href="connect.awsconnectionparams.html#getaccessid" class="tsd-kind-icon">get<wbr>Access<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getaccesskey" class="tsd-kind-icon">get<wbr>Access<wbr>Key</a>
+								<a href="connect.awsconnectionparams.html#getaccesskey" class="tsd-kind-icon">get<wbr>Access<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getaccount" class="tsd-kind-icon">get<wbr>Account</a>
+								<a href="connect.awsconnectionparams.html#getaccount" class="tsd-kind-icon">get<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getarn" class="tsd-kind-icon">get<wbr>Arn</a>
+								<a href="connect.awsconnectionparams.html#getarn" class="tsd-kind-icon">get<wbr>Arn</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasarray" class="tsd-kind-icon">get<wbr>AsArray</a>
+								<a href="connect.awsconnectionparams.html#getasarray" class="tsd-kind-icon">get<wbr>AsArray</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasarraywithdefault" class="tsd-kind-icon">get<wbr>AsArray<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasarraywithdefault" class="tsd-kind-icon">get<wbr>AsArray<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasboolean" class="tsd-kind-icon">get<wbr>AsBoolean</a>
+								<a href="connect.awsconnectionparams.html#getasboolean" class="tsd-kind-icon">get<wbr>AsBoolean</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasbooleanwithdefault" class="tsd-kind-icon">get<wbr>AsBoolean<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasbooleanwithdefault" class="tsd-kind-icon">get<wbr>AsBoolean<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasdatetime" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time</a>
+								<a href="connect.awsconnectionparams.html#getasdatetime" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasdatetimewithdefault" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasdatetimewithdefault" class="tsd-kind-icon">get<wbr>AsDate<wbr>Time<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasdouble" class="tsd-kind-icon">get<wbr>AsDouble</a>
+								<a href="connect.awsconnectionparams.html#getasdouble" class="tsd-kind-icon">get<wbr>AsDouble</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasdoublewithdefault" class="tsd-kind-icon">get<wbr>AsDouble<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasdoublewithdefault" class="tsd-kind-icon">get<wbr>AsDouble<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasfloat" class="tsd-kind-icon">get<wbr>AsFloat</a>
+								<a href="connect.awsconnectionparams.html#getasfloat" class="tsd-kind-icon">get<wbr>AsFloat</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasfloatwithdefault" class="tsd-kind-icon">get<wbr>AsFloat<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasfloatwithdefault" class="tsd-kind-icon">get<wbr>AsFloat<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasinteger" class="tsd-kind-icon">get<wbr>AsInteger</a>
+								<a href="connect.awsconnectionparams.html#getasinteger" class="tsd-kind-icon">get<wbr>AsInteger</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasintegerwithdefault" class="tsd-kind-icon">get<wbr>AsInteger<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasintegerwithdefault" class="tsd-kind-icon">get<wbr>AsInteger<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getaslong" class="tsd-kind-icon">get<wbr>AsLong</a>
+								<a href="connect.awsconnectionparams.html#getaslong" class="tsd-kind-icon">get<wbr>AsLong</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getaslongwithdefault" class="tsd-kind-icon">get<wbr>AsLong<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getaslongwithdefault" class="tsd-kind-icon">get<wbr>AsLong<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasmap" class="tsd-kind-icon">get<wbr>AsMap</a>
+								<a href="connect.awsconnectionparams.html#getasmap" class="tsd-kind-icon">get<wbr>AsMap</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasmapwithdefault" class="tsd-kind-icon">get<wbr>AsMap<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasmapwithdefault" class="tsd-kind-icon">get<wbr>AsMap<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullablearray" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Array</a>
+								<a href="connect.awsconnectionparams.html#getasnullablearray" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Array</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullableboolean" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Boolean</a>
+								<a href="connect.awsconnectionparams.html#getasnullableboolean" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Boolean</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullabledatetime" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Date<wbr>Time</a>
+								<a href="connect.awsconnectionparams.html#getasnullabledatetime" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Date<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullabledouble" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Double</a>
+								<a href="connect.awsconnectionparams.html#getasnullabledouble" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Double</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullablefloat" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Float</a>
+								<a href="connect.awsconnectionparams.html#getasnullablefloat" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Float</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullableinteger" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Integer</a>
+								<a href="connect.awsconnectionparams.html#getasnullableinteger" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Integer</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullablelong" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Long</a>
+								<a href="connect.awsconnectionparams.html#getasnullablelong" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Long</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullablemap" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Map</a>
+								<a href="connect.awsconnectionparams.html#getasnullablemap" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Map</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullablestring" class="tsd-kind-icon">get<wbr>AsNullable<wbr>String</a>
+								<a href="connect.awsconnectionparams.html#getasnullablestring" class="tsd-kind-icon">get<wbr>AsNullable<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasnullabletype" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Type</a>
+								<a href="connect.awsconnectionparams.html#getasnullabletype" class="tsd-kind-icon">get<wbr>AsNullable<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasobject" class="tsd-kind-icon">get<wbr>AsObject</a>
+								<a href="connect.awsconnectionparams.html#getasobject" class="tsd-kind-icon">get<wbr>AsObject</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasstring" class="tsd-kind-icon">get<wbr>AsString</a>
+								<a href="connect.awsconnectionparams.html#getasstring" class="tsd-kind-icon">get<wbr>AsString</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasstringwithdefault" class="tsd-kind-icon">get<wbr>AsString<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getasstringwithdefault" class="tsd-kind-icon">get<wbr>AsString<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="awsconnectionparams.html#getastype" class="tsd-kind-icon">get<wbr>AsType</a>
+								<a href="connect.awsconnectionparams.html#getastype" class="tsd-kind-icon">get<wbr>AsType</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
-								<a href="awsconnectionparams.html#getastypewithdefault" class="tsd-kind-icon">get<wbr>AsType<wbr>With<wbr>Default</a>
+								<a href="connect.awsconnectionparams.html#getastypewithdefault" class="tsd-kind-icon">get<wbr>AsType<wbr>With<wbr>Default</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getasvalue" class="tsd-kind-icon">get<wbr>AsValue</a>
+								<a href="connect.awsconnectionparams.html#getasvalue" class="tsd-kind-icon">get<wbr>AsValue</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getkeys" class="tsd-kind-icon">get<wbr>Keys</a>
+								<a href="connect.awsconnectionparams.html#getkeys" class="tsd-kind-icon">get<wbr>Keys</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getpartition" class="tsd-kind-icon">get<wbr>Partition</a>
+								<a href="connect.awsconnectionparams.html#getpartition" class="tsd-kind-icon">get<wbr>Partition</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getregion" class="tsd-kind-icon">get<wbr>Region</a>
+								<a href="connect.awsconnectionparams.html#getregion" class="tsd-kind-icon">get<wbr>Region</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getresource" class="tsd-kind-icon">get<wbr>Resource</a>
+								<a href="connect.awsconnectionparams.html#getresource" class="tsd-kind-icon">get<wbr>Resource</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getresourcetype" class="tsd-kind-icon">get<wbr>Resource<wbr>Type</a>
+								<a href="connect.awsconnectionparams.html#getresourcetype" class="tsd-kind-icon">get<wbr>Resource<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getsection" class="tsd-kind-icon">get<wbr>Section</a>
+								<a href="connect.awsconnectionparams.html#getsection" class="tsd-kind-icon">get<wbr>Section</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#getsectionnames" class="tsd-kind-icon">get<wbr>Section<wbr>Names</a>
+								<a href="connect.awsconnectionparams.html#getsectionnames" class="tsd-kind-icon">get<wbr>Section<wbr>Names</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#getservice" class="tsd-kind-icon">get<wbr>Service</a>
+								<a href="connect.awsconnectionparams.html#getservice" class="tsd-kind-icon">get<wbr>Service</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#length" class="tsd-kind-icon">length</a>
+								<a href="connect.awsconnectionparams.html#length" class="tsd-kind-icon">length</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#override" class="tsd-kind-icon">override</a>
+								<a href="connect.awsconnectionparams.html#override" class="tsd-kind-icon">override</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#put" class="tsd-kind-icon">put</a>
+								<a href="connect.awsconnectionparams.html#put" class="tsd-kind-icon">put</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#remove" class="tsd-kind-icon">remove</a>
+								<a href="connect.awsconnectionparams.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setaccessid" class="tsd-kind-icon">set<wbr>Access<wbr>Id</a>
+								<a href="connect.awsconnectionparams.html#setaccessid" class="tsd-kind-icon">set<wbr>Access<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setaccesskey" class="tsd-kind-icon">set<wbr>Access<wbr>Key</a>
+								<a href="connect.awsconnectionparams.html#setaccesskey" class="tsd-kind-icon">set<wbr>Access<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setaccount" class="tsd-kind-icon">set<wbr>Account</a>
+								<a href="connect.awsconnectionparams.html#setaccount" class="tsd-kind-icon">set<wbr>Account</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setarn" class="tsd-kind-icon">set<wbr>Arn</a>
+								<a href="connect.awsconnectionparams.html#setarn" class="tsd-kind-icon">set<wbr>Arn</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#setasobject" class="tsd-kind-icon">set<wbr>AsObject</a>
+								<a href="connect.awsconnectionparams.html#setasobject" class="tsd-kind-icon">set<wbr>AsObject</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#setdefaults" class="tsd-kind-icon">set<wbr>Defaults</a>
+								<a href="connect.awsconnectionparams.html#setdefaults" class="tsd-kind-icon">set<wbr>Defaults</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setpartition" class="tsd-kind-icon">set<wbr>Partition</a>
+								<a href="connect.awsconnectionparams.html#setpartition" class="tsd-kind-icon">set<wbr>Partition</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setregion" class="tsd-kind-icon">set<wbr>Region</a>
+								<a href="connect.awsconnectionparams.html#setregion" class="tsd-kind-icon">set<wbr>Region</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setresource" class="tsd-kind-icon">set<wbr>Resource</a>
+								<a href="connect.awsconnectionparams.html#setresource" class="tsd-kind-icon">set<wbr>Resource</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setresourcetype" class="tsd-kind-icon">set<wbr>Resource<wbr>Type</a>
+								<a href="connect.awsconnectionparams.html#setresourcetype" class="tsd-kind-icon">set<wbr>Resource<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#setservice" class="tsd-kind-icon">set<wbr>Service</a>
+								<a href="connect.awsconnectionparams.html#setservice" class="tsd-kind-icon">set<wbr>Service</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="awsconnectionparams.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+								<a href="connect.awsconnectionparams.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="awsconnectionparams.html#validate" class="tsd-kind-icon">validate</a>
+								<a href="connect.awsconnectionparams.html#validate" class="tsd-kind-icon">validate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="awsconnectionparams.html#fromconfig" class="tsd-kind-icon">from<wbr>Config</a>
+								<a href="connect.awsconnectionparams.html#fromconfig" class="tsd-kind-icon">from<wbr>Config</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="awsconnectionparams.html#frommaps" class="tsd-kind-icon">from<wbr>Maps</a>
+								<a href="connect.awsconnectionparams.html#frommaps" class="tsd-kind-icon">from<wbr>Maps</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
-								<a href="awsconnectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a>
+								<a href="connect.awsconnectionparams.html#fromstring" class="tsd-kind-icon">from<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
-								<a href="awsconnectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a>
+								<a href="connect.awsconnectionparams.html#fromtuples" class="tsd-kind-icon">from<wbr>Tuples</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="awsconnectionparams.html#fromtuplesarray" class="tsd-kind-icon">from<wbr>Tuples<wbr>Array</a>
+								<a href="connect.awsconnectionparams.html#fromtuplesarray" class="tsd-kind-icon">from<wbr>Tuples<wbr>Array</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
-								<a href="awsconnectionparams.html#fromvalue" class="tsd-kind-icon">from<wbr>Value</a>
+								<a href="connect.awsconnectionparams.html#fromvalue" class="tsd-kind-icon">from<wbr>Value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
-								<a href="awsconnectionparams.html#mergeconfigs" class="tsd-kind-icon">merge<wbr>Configs</a>
+								<a href="connect.awsconnectionparams.html#mergeconfigs" class="tsd-kind-icon">merge<wbr>Configs</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="awsconnectionresolver.html" class="tsd-kind-icon">Aws<wbr>Connection<wbr>Resolver</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="commandablelambdaclient.html" class="tsd-kind-icon">Commandable<wbr>Lambda<wbr>Client</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="commandablelambdafunction.html" class="tsd-kind-icon">Commandable<wbr>Lambda<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="lambdaclient.html" class="tsd-kind-icon">Lambda<wbr>Client</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="lambdafunction.html" class="tsd-kind-icon">Lambda<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#_" class="tsd-kind-icon">_</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#async" class="tsd-kind-icon">async</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#process" class="tsd-kind-icon">process</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="connect.awsconnectionresolver.html" class="tsd-kind-icon">Aws<wbr>Connection<wbr>Resolver</a>
 					</li>
 				</ul>
 			</nav>

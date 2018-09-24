@@ -1,3 +1,4 @@
+/** @module connect */
 import { ConfigParams } from 'pip-services-commons-node';
 import { StringValueMap } from 'pip-services-commons-node';
 import { ConfigException } from 'pip-services-commons-node';

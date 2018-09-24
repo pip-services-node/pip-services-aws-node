@@ -1,3 +1,4 @@
+/** @module container */
 import { ICommandable } from 'pip-services-commons-node';
 import { CommandSet } from 'pip-services-commons-node';
 import { Parameters } from 'pip-services-commons-node';

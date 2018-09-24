@@ -1,4 +1,7 @@
+/** @module connect */
+/** @hidden */
 let _ = require('lodash');
+/** @hidden */
 let async = require('async');
 
 import { IConfigurable } from 'pip-services-commons-node';

@@ -1,3 +1,4 @@
+/** @module count */
 /**
  * Constants that determine cloud watch units.
  */

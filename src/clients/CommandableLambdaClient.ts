@@ -1,3 +1,4 @@
+/** @module clients */
 import { LambdaClient } from './LambdaClient';
 
 /**

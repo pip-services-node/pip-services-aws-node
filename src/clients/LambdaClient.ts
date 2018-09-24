@@ -1,4 +1,7 @@
+/** @module clients */
+/** @hidden */
 let _ = require('lodash');
+/** @hidden */
 let async = require('async');
 
 import { IOpenable } from 'pip-services-commons-node';
