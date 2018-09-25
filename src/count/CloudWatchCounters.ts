@@ -37,9 +37,9 @@ import { CloudWatchUnit } from './CloudWatchUnit';
  * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connections
  * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
- * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.counter.html Counter]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.cachedcounters.html CachedCounters]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/log.compositelogger.html CompositeLogger]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.counter.html Counter]] (in the Pip.Services components package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.cachedcounters.html CachedCounters]] (in the Pip.Services components package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/log.compositelogger.html CompositeLogger]] (in the Pip.Services components package)
  * 
  * ### Example ###
  * 
@@ -50,7 +50,8 @@ import { CloudWatchUnit } from './CloudWatchUnit';
  *         "connection.access_key", "XXXXXXXXXXX"
  *     ));
  *     counters.setReferences(References.fromTuples(
- *         new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ *         new Descriptor("pip-services", "logger", "console", "default", "1.0"), 
+ *         new ConsoleLogger()
  *     ));
  *     
  *     counters.open("123", (err) => {
@@ -104,7 +105,7 @@ export class CloudWatchCounters extends CachedCounters implements IReferenceable
 	 * Sets references to dependent components.
 	 * 
 	 * @param references 	references to locate the component dependencies. 
-	 * @see [[IReferences]]
+	 * @see [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html IReferences]] (in the Pip.Services commons package)
 	 */
     public setReferences(references: IReferences): void {
         this._logger.setReferences(references);

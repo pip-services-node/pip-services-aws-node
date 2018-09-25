@@ -78,54 +78,66 @@
 					<p>Container configuration for this Lambda function is stored in &quot;./config/config.yml&quot; file.
 					But this path can be overriden by CONFIG_PATH environment variable.</p>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>dependencies:
-						controller:                  override for Controller dependency
-						connections:
-						discovery_key:               (optional) a key to retrieve the connection from IDiscovery
-						region:                      (optional) AWS region
-						credentials:
-						store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
-						access_id:                   AWS access/client id
-					access_key:                  AWS access/client id</p>
+					<ul>
+						<li>dependencies:<ul>
+								<li>controller:                  override for Controller dependency</li>
+							</ul>
+						</li>
+						<li>connections:<ul>
+								<li>discovery_key:               (optional) a key to retrieve the connection from IDiscovery</li>
+								<li>region:                      (optional) AWS region</li>
+							</ul>
+						</li>
+						<li>credentials:<ul>
+								<li>store_key:                   (optional) a key to retrieve the credentials from ICredentialStore</li>
+								<li>access_id:                   AWS access/client id</li>
+								<li>access_key:                  AWS access/client id</li>
+							</ul>
+						</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><em>:logger:</em>:*:1.0               (optional) ILogger components to pass log messages</li>
-						<li><em>:counters:</em>:*:1.0             (optional) ICounters components to pass collected measurements</li>
-						<li><em>:discovery:</em>:*:1.0            (optional) IDiscovery services to resolve connection</li>
-						<li><em>:credential-store:</em>:*:1.0     (optional) Credential stores to resolve credentials</li>
+						<li><code>*:logger:*:*:1.0</code>            (optional) ILogger components to pass log messages</li>
+						<li><code>*:counters:*:*:1.0</code>          (optional) ICounters components to pass collected measurements</li>
+						<li><code>*:discovery:*:*:1.0</code>         (optional) IDiscovery services to resolve connection</li>
+						<li><code>*:credential-store:*:*:1.0</code>  (optional) Credential stores to resolve credentials</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="clients.lambdaclient.html">LambdaClient</a></p>
 							<h3 id="example">Example</h3>
-							<p>class MyLambdaFunction extends LambdaFunction {
-								private _controller: IMyController;
-								...
-								public constructor() {
-								base(&quot;mygroup&quot;, &quot;MyGroup lambda function&quot;);
-								this._dependencyResolver.put(
-								&quot;controller&quot;,
-								new Descriptor(&quot;mygroup&quot;,&quot;controller&quot;,&quot;<em>&quot;,&quot;</em>&quot;,&quot;1.0&quot;)
-								);
-							}</p>
-							<p>   public setReferences(references: IReferences): void {
-								base.setReferences(references);
-								this._controller = this._dependencyResolver.getRequired<IMyController>(&quot;controller&quot;);
-							}</p>
-							<p>   public register(): void {
-								registerAction(&quot;get_mydata&quot;, null, (params, callback) =&gt; {
-								let correlationId = params.correlation_id;
-								let id = params.id;
-								this._controller.getMyData(correlationId, id, callback);
-								});
-								...
-								}
-							}</p>
-							<p>let lambda = new MyLambdaFunction();</p>
-							<p>service.run((err) =&gt; {
-								console.log(&quot;MyLambdaFunction is started&quot;);
-							});</p>
-						</dd>
+							<pre><code><span class="hljs-keyword">class</span> <span class="hljs-title">MyLambdaFunction</span> <span class="hljs-title">extends</span> <span class="hljs-title">LambdaFunction</span> {
+    <span class="hljs-keyword">private</span> _controller: IMyController;
+    ...
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">constructor</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">base</span>(<span class="hljs-string">"mygroup"</span>, <span class="hljs-string">"MyGroup lambda function"</span>);
+        <span class="hljs-keyword">this</span>._dependencyResolver.put(
+            <span class="hljs-string">"controller"</span>,
+            <span class="hljs-keyword">new</span> Descriptor(<span class="hljs-string">"mygroup"</span>,<span class="hljs-string">"controller"</span>,<span class="hljs-string">"*"</span>,<span class="hljs-string">"*"</span>,<span class="hljs-string">"1.0"</span>)
+        );
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">setReferences</span>(<span class="hljs-params">references: IReferences</span>): <span class="hljs-keyword">void</span> </span>{
+        <span class="hljs-keyword">base</span>.setReferences(references);
+        <span class="hljs-keyword">this</span>._controller = <span class="hljs-keyword">this</span>._dependencyResolver.getRequired&lt;IMyController&gt;(<span class="hljs-string">"controller"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">register</span>(<span class="hljs-params"></span>): <span class="hljs-keyword">void</span> </span>{
+        registerAction(<span class="hljs-string">"get_mydata"</span>, <span class="hljs-literal">null</span>, (<span class="hljs-keyword">params</span>, callback) =&gt; {
+            <span class="hljs-keyword">let</span> correlationId = <span class="hljs-keyword">params</span>.correlation_id;
+            <span class="hljs-keyword">let</span> id = <span class="hljs-keyword">params</span>.id;
+            <span class="hljs-keyword">this</span>._controller.getMyData(correlationId, id, callback);
+        });
+        ...
+    }
+}
+
+<span class="hljs-keyword">let</span> lambda = <span class="hljs-keyword">new</span> MyLambdaFunction();
+
+service.run((err) =&gt; {
+    console.log(<span class="hljs-string">"MyLambdaFunction is started"</span>);
+});
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -216,7 +228,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Container.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +268,7 @@
 					<div class="tsd-signature tsd-kind-icon">_actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L99">container/LambdaFunction.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L99">container/LambdaFunction.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -290,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">_config<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;./config/config.yml&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -305,7 +317,7 @@
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeCounters</span><span class="tsd-signature-symbol"> =&nbsp;new CompositeCounters()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L87">container/LambdaFunction.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L87">container/LambdaFunction.ts:87</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -320,7 +332,7 @@
 					<div class="tsd-signature tsd-kind-icon">_dependency<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DependencyResolver</span><span class="tsd-signature-symbol"> =&nbsp;new DependencyResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L91">container/LambdaFunction.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L91">container/LambdaFunction.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -379,7 +391,7 @@
 					<div class="tsd-signature tsd-kind-icon">_schemas<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L95">container/LambdaFunction.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L95">container/LambdaFunction.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -409,7 +421,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L310">container/LambdaFunction.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L310">container/LambdaFunction.ts:310</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -602,7 +614,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L290">container/LambdaFunction.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L290">container/LambdaFunction.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -651,7 +663,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L170">container/LambdaFunction.ts:170</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L170">container/LambdaFunction.ts:170</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -833,7 +845,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L200">container/LambdaFunction.ts:200</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L200">container/LambdaFunction.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -857,7 +869,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L209">container/LambdaFunction.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L209">container/LambdaFunction.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -942,7 +954,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L182">container/LambdaFunction.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L182">container/LambdaFunction.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -994,7 +1006,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Container.setReferences</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/container/LambdaFunction.ts#L154">container/LambdaFunction.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L154">container/LambdaFunction.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

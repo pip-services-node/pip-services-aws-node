@@ -74,44 +74,52 @@
 						validate them and compose a <a href="connect.awsconnectionparams.html">AwsConnectionParams</a> value.</p>
 					</div>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>connections:
-						discovery_key:               (optional) a key to retrieve the connection from IDiscovery
-						region:                      (optional) AWS region
-						partition:                   (optional) AWS partition
-						service:                     (optional) AWS service
-						resource_type:               (optional) AWS resource type
-						resource:                    (optional) AWS resource id
-						arn:                         (optional) AWS resource ARN
-						credentials:
-						store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
-						access_id:                   AWS access/client id
-					access_key:                  AWS access/client id</p>
+					<ul>
+						<li>connections:<ul>
+								<li>discovery_key:               (optional) a key to retrieve the connection from IDiscovery</li>
+								<li>region:                      (optional) AWS region</li>
+								<li>partition:                   (optional) AWS partition</li>
+								<li>service:                     (optional) AWS service</li>
+								<li>resource_type:               (optional) AWS resource type</li>
+								<li>resource:                    (optional) AWS resource id</li>
+								<li>arn:                         (optional) AWS resource ARN</li>
+							</ul>
+						</li>
+						<li>credentials:<ul>
+								<li>store_key:                   (optional) a key to retrieve the credentials from ICredentialStore</li>
+								<li>access_id:                   AWS access/client id</li>
+								<li>access_key:                  AWS access/client id</li>
+							</ul>
+						</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><em>:discovery:</em>:*:1.0            (optional) IDiscovery services to resolve connections</li>
-						<li><em>:credential-store:</em>:*:1.0     (optional) Credential stores to resolve credentials</li>
+						<li><code>*:discovery:*:*:1.0</code>         (optional) IDiscovery services to resolve connections</li>
+						<li><code>*:credential-store:*:*:1.0</code>  (optional) Credential stores to resolve credentials</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
-						<dd><p>[[ConnectionParams]]</p>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/connect.connectionparams.html" class="external">ConnectionParams</a> (in the Pip.Services components package)</p>
 						</dd>
 						<dt>see</dt>
-						<dd><p>[[IDiscovery]]</p>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> (in the Pip.Services components package)</p>
 							<h3 id="example">Example</h3>
-							<p>let config = ConfigParams.fromTuples(
-								&quot;connection.region&quot;, &quot;us-east1&quot;,
-								&quot;connection.service&quot;, &quot;s3&quot;,
-								&quot;connection.bucket&quot;, &quot;mybucket&quot;,
-								&quot;credential.access_id&quot;, &quot;XXXXXXXXXX&quot;,
-								&quot;credential.access_key&quot;, &quot;XXXXXXXXXX&quot;
-							);</p>
-							<p>let connectionResolver = new AwsConnectionResolver();
-								connectionResolver.configure(config);
-							connectionResolver.setReferences(references);</p>
-							<p>connectionResolver.resolve(&quot;123&quot;, (err, connection) =&gt; {
-								// Now use connection...
-							});</p>
-						</dd>
+							<pre><code><span class="hljs-keyword">let</span> config = <span class="hljs-type">ConfigParams</span>.fromTuples(
+    <span class="hljs-string">"connection.region"</span>, <span class="hljs-string">"us-east1"</span>,
+    <span class="hljs-string">"connection.service"</span>, <span class="hljs-string">"s3"</span>,
+    <span class="hljs-string">"connection.bucket"</span>, <span class="hljs-string">"mybucket"</span>,
+    <span class="hljs-string">"credential.access_id"</span>, <span class="hljs-string">"XXXXXXXXXX"</span>,
+    <span class="hljs-string">"credential.access_key"</span>, <span class="hljs-string">"XXXXXXXXXX"</span>
+);
+
+<span class="hljs-keyword">let</span> connectionResolver = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">AwsConnectionResolver</span>();
+<span class="hljs-title">connectionResolver</span>.<span class="hljs-title">configure</span>(config);
+<span class="hljs-title">connectionResolver</span>.<span class="hljs-title">setReferences</span>(references);
+
+<span class="hljs-title">connectionResolver</span>.<span class="hljs-title">resolve</span>("<span class="hljs-number">123</span>", (err, connection) =&gt;</span> {
+    <span class="hljs-comment">// Now use connection...</span>
+});
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -160,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">_connection<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConnectionResolver</span><span class="tsd-signature-symbol"> =&nbsp;new ConnectionResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionResolver.ts#L67">connect/AwsConnectionResolver.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionResolver.ts#L67">connect/AwsConnectionResolver.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">_credential<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CredentialResolver</span><span class="tsd-signature-symbol"> =&nbsp;new CredentialResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionResolver.ts#L71">connect/AwsConnectionResolver.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionResolver.ts#L71">connect/AwsConnectionResolver.ts:71</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +205,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionResolver.ts#L78">connect/AwsConnectionResolver.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionResolver.ts#L78">connect/AwsConnectionResolver.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionResolver.ts#L102">connect/AwsConnectionResolver.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionResolver.ts#L102">connect/AwsConnectionResolver.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,7 +246,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>[[IDiscovery]]</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> (in the Pip.Services components package)</p>
 									</dd>
 								</dl>
 							</div>
@@ -292,7 +300,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionResolver.ts#L88">connect/AwsConnectionResolver.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionResolver.ts#L88">connect/AwsConnectionResolver.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

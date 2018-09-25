@@ -39,8 +39,8 @@ import { AwsConnectionParams } from './AwsConnectionParams';
  * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connections
  * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
- * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/connect.connectionparams.html ConnectionParams]]
- * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/connect.connectionparams.html ConnectionParams]] (in the Pip.Services components package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] (in the Pip.Services components package)
  * 
  * ### Example ###
  * 
@@ -97,7 +97,7 @@ export class AwsConnectionResolver implements IConfigurable, IReferenceable {
      * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param callback 			callback function that receives AWSConnectionParams value or error.
      * 
-     * @see [[IDiscovery]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] (in the Pip.Services components package)
      */
     public resolve(correlationId: string,
         callback: (err: any, connection: AwsConnectionParams) => void): void {

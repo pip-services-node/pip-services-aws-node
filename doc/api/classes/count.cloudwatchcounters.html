@@ -73,53 +73,65 @@
 						<p>Performance counters that periodically dumps counters to AWS Cloud Watch Metrics.</p>
 					</div>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>connections:
-						discovery_key:               (optional) a key to retrieve the connection from IDiscovery
-						region:                      (optional) AWS region
-						credentials:
-						store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
-						access_id:                   AWS access/client id
-						access_key:                  AWS access/client id
-						options:
-						interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
-					reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)</p>
+					<ul>
+						<li>connections:<ul>
+								<li>discovery_key:         (optional) a key to retrieve the connection from IDiscovery</li>
+								<li>region:                (optional) AWS region</li>
+							</ul>
+						</li>
+						<li>credentials:<ul>
+								<li>store_key:             (optional) a key to retrieve the credentials from ICredentialStore</li>
+								<li>access_id:             AWS access/client id</li>
+								<li>access_key:            AWS access/client id</li>
+							</ul>
+						</li>
+						<li>options:<ul>
+								<li>interval:              interval in milliseconds to save current counters measurements (default: 5 mins)</li>
+								<li>reset_timeout:         timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)</li>
+							</ul>
+						</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><em>:context-info:</em>:*:1.0         (optional) ContextInfo to detect the context id and specify counters source</li>
-						<li><em>:discovery:</em>:*:1.0            (optional) IDiscovery services to resolve connections</li>
-						<li><em>:credential-store:</em>:*:1.0     (optional) Credential stores to resolve credentials</li>
+						<li><code>*:context-info:*:*:1.0</code>      (optional) ContextInfo to detect the context id and specify counters source</li>
+						<li><code>*:discovery:*:*:1.0</code>         (optional) IDiscovery services to resolve connections</li>
+						<li><code>*:credential-store:*:*:1.0</code>  (optional) Credential stores to resolve credentials</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
-						<dd><p>[[Counter]]</p>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.counter.html" class="external">Counter</a> (in the Pip.Services components package)</p>
 						</dd>
 						<dt>see</dt>
-						<dd><p><a href="count.cloudwatchcounters.html#cachedcounters">CachedCounters</a></p>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.cachedcounters.html" class="external">CachedCounters</a> (in the Pip.Services components package)</p>
 						</dd>
 						<dt>see</dt>
-						<dd><p>[[CompositeLogger]]</p>
+						<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/log.compositelogger.html" class="external">CompositeLogger</a> (in the Pip.Services components package)</p>
 							<h3 id="example">Example</h3>
-							<p>let counters = new CloudWatchCounters();
-								counters.config(ConfigParams.fromTuples(
-								&quot;connection.region&quot;, &quot;us-east-1&quot;,
-								&quot;connection.access_id&quot;, &quot;XXXXXXXXXXX&quot;,
-								&quot;connection.access_key&quot;, &quot;XXXXXXXXXXX&quot;
-								));
-								counters.setReferences(References.fromTuples(
-								new Descriptor(&quot;pip-services&quot;, &quot;logger&quot;, &quot;console&quot;, &quot;default&quot;, &quot;1.0&quot;), new ConsoleLogger()
-							));</p>
-							<p>counters.open(&quot;123&quot;, (err) =&gt; {
-								...
-							});</p>
-							<p>counters.increment(&quot;mycomponent.mymethod.calls&quot;);
-								let timing = counters.beginTiming(&quot;mycomponent.mymethod.exec_time&quot;);
-								try {
-								...
-								} finally {
-								timing.endTiming();
-							}</p>
-							<p>counters.dump();</p>
-						</dd>
+							<pre><code>let <span class="hljs-keyword">counters</span> = new CloudWatchCounters();
+<span class="hljs-keyword">counters</span>.config(ConfigParams.<span class="hljs-keyword">from</span>Tuples(
+    <span class="hljs-string">"connection.region"</span>, <span class="hljs-string">"us-east-1"</span>,
+    <span class="hljs-string">"connection.access_id"</span>, <span class="hljs-string">"XXXXXXXXXXX"</span>,
+    <span class="hljs-string">"connection.access_key"</span>, <span class="hljs-string">"XXXXXXXXXXX"</span>
+));
+<span class="hljs-keyword">counters</span>.<span class="hljs-built_in">set</span>References(References.<span class="hljs-keyword">from</span>Tuples(
+    new Descriptor(<span class="hljs-string">"pip-services"</span>, <span class="hljs-string">"logger"</span>, <span class="hljs-string">"console"</span>, <span class="hljs-string">"default"</span>, <span class="hljs-string">"1.0"</span>),
+    new ConsoleLogger()
+));
+
+<span class="hljs-keyword">counters</span>.open(<span class="hljs-string">"123"</span>, (err) =&gt; {
+    ...
+});
+
+<span class="hljs-keyword">counters</span>.increment(<span class="hljs-string">"mycomponent.mymethod.calls"</span>);
+let timing = <span class="hljs-keyword">counters</span>.beginTiming(<span class="hljs-string">"mycomponent.mymethod.exec_time"</span>);
+try {
+    ...
+} finally {
+    timing.endTiming();
+}
+
+<span class="hljs-keyword">counters</span>.dump();
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -210,7 +222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L80">count/CloudWatchCounters.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L81">count/CloudWatchCounters.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,7 +244,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._cache</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:11</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:17</li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -251,7 +263,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._interval</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:9</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:15</li>
 						</ul>
 					</aside>
 				</section>
@@ -262,7 +274,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._lastDumpTime</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:15</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:21</li>
 						</ul>
 					</aside>
 				</section>
@@ -273,7 +285,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._lastResetTime</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:16</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:22</li>
 						</ul>
 					</aside>
 				</section>
@@ -284,7 +296,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._resetTimeout</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:10</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:16</li>
 						</ul>
 					</aside>
 				</section>
@@ -295,7 +307,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from CachedCounters._updated</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:14</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:20</li>
 						</ul>
 					</aside>
 				</section>
@@ -313,9 +325,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.CachedCounters</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:17</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:26</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new CachedCounters object.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -331,13 +348,27 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.beginTiming</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:24</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:74</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates and starts a new [[Timing]], which will call this object&#39;s <a href="count.cloudwatchcounters.html#endtiming">endTiming</a>
+									method once timing stops.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[Timing]]</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to include in the callback.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Timing</span></h4>
@@ -355,13 +386,21 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.clear</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:22</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:61</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes the [[Counter]] with the given name from this object&#39;s cache.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to remove.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -379,9 +418,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.clearAll</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:23</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:65</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Removes all [[Counter Counters]] from this object&#39;s cache.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -396,7 +440,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L177">count/CloudWatchCounters.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L178">count/CloudWatchCounters.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +496,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CachedCounters.configure</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L94">count/CloudWatchCounters.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L95">count/CloudWatchCounters.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -484,9 +528,20 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.dump</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:25</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:81</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Dumps the [[Counter Counters]] that are stored in this object&#39;s
+									cache to memory.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#save">save</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -502,16 +557,32 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.endTiming</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:31</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:123</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Method that is called by a [[Timing Timing]] once timing has ended.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#begintiming">beginTiming</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter that was being timed.</p>
+									</div>
 								</li>
 								<li>
 									<h5>elapsed: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the time elapsed since timing began.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -529,19 +600,40 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.get</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:29</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:113</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Looks for a [[Counter]] with the given name and type within this object&#39;s
+										cache. If none are found, then a new [[Counter]] of the given
+									[[CounterType type]] is created, added to the cache, and returned.</p>
+								</div>
+								<p>If the need for cache resetting is detected, calling this method will
+								trigger the reset.</p>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>an Error if name is <code>null</code></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to retrieve.</p>
+									</div>
 								</li>
 								<li>
 									<h5>type: <span class="tsd-signature-type">CounterType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the counter&#39;s type.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Counter</span></h4>
+							<p>the counter found in the cache or the one created (if none were found).</p>
 						</li>
 					</ul>
 				</section>
@@ -556,10 +648,18 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.getAll</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:28</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:98</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves the [[Counter Counters]] that are stored in this object&#39;s cache.</p>
+								</div>
+								<p>If the need for cache resetting is detected, calling this method will
+								trigger the reset.</p>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Counter</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>an array, containing all cached Counters.</p>
 						</li>
 					</ul>
 				</section>
@@ -574,10 +674,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.getInterval</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:18</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:31</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>this CachedCounters&#39; update interval. Used to dump the cache to memory at
+							regular intervals.</p>
 						</li>
 					</ul>
 				</section>
@@ -592,16 +696,36 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.increment</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:37</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:187</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Increments the named [[CounterType.Increment Incremental Counter]] by the
+									given value.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#get">get</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to increment.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to increment the counter by.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -619,13 +743,29 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.incrementOne</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:36</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:176</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Incrementes the named [[CounterType.Increment Incremental Counter]] by 1.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#increment">increment</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to increment.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -642,7 +782,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L126">count/CloudWatchCounters.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L127">count/CloudWatchCounters.ts:127</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -666,16 +806,36 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.last</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:33</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:146</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the named [[CounterType.LastValue Last Counter]] by setting
+									its last value to the value given.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#get">get</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -692,7 +852,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L136">count/CloudWatchCounters.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L137">count/CloudWatchCounters.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -748,7 +908,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CachedCounters.save</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L232">count/CloudWatchCounters.ts:232</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L233">count/CloudWatchCounters.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -780,13 +940,22 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.setInterval</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:19</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:38</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets this CachedCounters&#39; update interval, which is used to dump the cache to memory
+									at regular intervals.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to set this CachedCounters&#39; update interval to.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -803,7 +972,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/count/CloudWatchCounters.ts#L109">count/CloudWatchCounters.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/count/CloudWatchCounters.ts#L110">count/CloudWatchCounters.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -812,7 +981,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>see</dt>
-									<dd><p>[[IReferences]]</p>
+									<dd><p><a href="https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/refer.ireferences.html" class="external">IReferences</a> (in the Pip.Services commons package)</p>
 									</dd>
 								</dl>
 							</div>
@@ -840,16 +1009,37 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.stats</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:32</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:135</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds the given value to the named [[CounterType.Statistics Statistics Counter]]
+										and recalculates its statistics, taking into account the new value.
+									Statistics include last, count, min, max, and average.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#get">get</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the value to update the counter with.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -867,16 +1057,36 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.timestamp</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:35</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:167</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the named [[CounterType.Timestamp Timestamp Counter&#39;s]] time to
+									the time given.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#get">get</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 								<li>
 									<h5>value: <span class="tsd-signature-type">Date</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the timestamp to update the counter to.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -894,13 +1104,30 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.timestampNow</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:34</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:156</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the named [[CounterType.Timestamp Timestamp Counter&#39;s]] time to
+									the current time.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[CounterType]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#timestamp">timestamp</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the name of the counter to update.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -918,9 +1145,20 @@
 							<aside class="tsd-sources">
 								<p>Inherited from CachedCounters.update</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:26</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-components-node/obj/src/count/CachedCounters.d.ts:88</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks whether or not the update interval has passed (since the last
+									<a href="count.cloudwatchcounters.html#dump">dump</a> was performed) and, if it has, performs a <a href="count.cloudwatchcounters.html#dump">dump</a>.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="count.cloudwatchcounters.html#dump">dump</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

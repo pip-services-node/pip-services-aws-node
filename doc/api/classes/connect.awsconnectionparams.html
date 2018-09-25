@@ -75,28 +75,31 @@
 					</div>
 					<p>The class is able to compose and parse AWS resource ARNs.</p>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>access_id:     application access id
-						client_id:     alternative to access_id
-						access_key:    application secret key
-						client_key:    alternative to access_key
-					secret_key:    alternative to access_key</p>
+					<ul>
+						<li>access_id:     application access id</li>
+						<li>client_id:     alternative to access_id</li>
+						<li>access_key:    application secret key</li>
+						<li>client_key:    alternative to access_key</li>
+						<li>secret_key:    alternative to access_key</li>
+					</ul>
 					<p>In addition to standard parameters CredentialParams may contain any number of custom parameters</p>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
 						<dd><p><a href="connect.awsconnectionresolver.html">AwsConnectionResolver</a></p>
 							<h3 id="example">Example</h3>
-							<p>let connection = AwsConnectionParams.fromTuples(
-								&quot;region&quot;, &quot;us-east-1&quot;,
-								&quot;access_id&quot;, &quot;XXXXXXXXXXXXXXX&quot;,
-								&quot;secret_key&quot;, &quot;XXXXXXXXXXXXXXX&quot;,
-								&quot;service&quot;, &quot;s3&quot;,
-								&quot;bucket&quot;, &quot;mybucket&quot;
-							);</p>
-							<p>let region = connection.getRegion();                     // Result: &quot;us-east-1&quot;
-								let accessId = connection.getAccessId();                 // Result: &quot;XXXXXXXXXXXXXXX&quot;
-								let secretKey = connection.getAccessKey();               // Result: &quot;XXXXXXXXXXXXXXX&quot;
-							let pin = connection.getAsNullableString(&quot;bucket&quot;);      // Result: &quot;mybucket&quot;</p>
-						</dd>
+							<pre><code><span class="hljs-keyword">let</span> <span class="hljs-attr">connection</span> = AwsConnectionParams.fromTuples(
+    <span class="hljs-string">"region"</span>, <span class="hljs-string">"us-east-1"</span>,
+    <span class="hljs-string">"access_id"</span>, <span class="hljs-string">"XXXXXXXXXXXXXXX"</span>,
+    <span class="hljs-string">"secret_key"</span>, <span class="hljs-string">"XXXXXXXXXXXXXXX"</span>,
+    <span class="hljs-string">"service"</span>, <span class="hljs-string">"s3"</span>,
+    <span class="hljs-string">"bucket"</span>, <span class="hljs-string">"mybucket"</span>
+);
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">region</span> = connection.getRegion();                     // Result: <span class="hljs-string">"us-east-1"</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">accessId</span> = connection.getAccessId();                 // Result: <span class="hljs-string">"XXXXXXXXXXXXXXX"</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">secretKey</span> = connection.getAccessKey();               // Result: <span class="hljs-string">"XXXXXXXXXXXXXXX"</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">pin</span> = connection.getAsNullableString(<span class="hljs-string">"bucket"</span>);      // Result: <span class="hljs-string">"mybucket"</span>
+</code></pre></dd>
 					</dl>
 				</div>
 			</section>
@@ -217,7 +220,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L41">connect/AwsConnectionParams.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L41">connect/AwsConnectionParams.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -396,7 +399,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L226">connect/AwsConnectionParams.ts:226</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L226">connect/AwsConnectionParams.ts:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -419,7 +422,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L244">connect/AwsConnectionParams.ts:244</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L244">connect/AwsConnectionParams.ts:244</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -442,7 +445,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L111">connect/AwsConnectionParams.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L111">connect/AwsConnectionParams.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,7 +468,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L166">connect/AwsConnectionParams.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L166">connect/AwsConnectionParams.ts:166</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1757,7 +1760,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L57">connect/AwsConnectionParams.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L57">connect/AwsConnectionParams.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1780,7 +1783,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L93">connect/AwsConnectionParams.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L93">connect/AwsConnectionParams.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1803,7 +1806,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L147">connect/AwsConnectionParams.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L147">connect/AwsConnectionParams.ts:147</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1826,7 +1829,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L129">connect/AwsConnectionParams.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L129">connect/AwsConnectionParams.ts:129</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1904,7 +1907,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L75">connect/AwsConnectionParams.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L75">connect/AwsConnectionParams.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2053,7 +2056,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L235">connect/AwsConnectionParams.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L235">connect/AwsConnectionParams.ts:235</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2084,7 +2087,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L253">connect/AwsConnectionParams.ts:253</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L253">connect/AwsConnectionParams.ts:253</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2115,7 +2118,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L120">connect/AwsConnectionParams.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L120">connect/AwsConnectionParams.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2146,7 +2149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L195">connect/AwsConnectionParams.ts:195</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L195">connect/AwsConnectionParams.ts:195</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2263,7 +2266,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L66">connect/AwsConnectionParams.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L66">connect/AwsConnectionParams.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2294,7 +2297,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L102">connect/AwsConnectionParams.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L102">connect/AwsConnectionParams.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2325,7 +2328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L156">connect/AwsConnectionParams.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L156">connect/AwsConnectionParams.ts:156</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2356,7 +2359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L138">connect/AwsConnectionParams.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L138">connect/AwsConnectionParams.ts:138</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2387,7 +2390,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L84">connect/AwsConnectionParams.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L84">connect/AwsConnectionParams.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2440,7 +2443,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L275">connect/AwsConnectionParams.ts:275</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L275">connect/AwsConnectionParams.ts:275</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2472,7 +2475,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L311">connect/AwsConnectionParams.ts:311</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L311">connect/AwsConnectionParams.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2544,7 +2547,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.fromString</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L264">connect/AwsConnectionParams.ts:264</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L264">connect/AwsConnectionParams.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2690,7 +2693,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides ConfigParams.mergeConfigs</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/f81a811/src/connect/AwsConnectionParams.ts#L334">connect/AwsConnectionParams.ts:334</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/connect/AwsConnectionParams.ts#L334">connect/AwsConnectionParams.ts:334</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
