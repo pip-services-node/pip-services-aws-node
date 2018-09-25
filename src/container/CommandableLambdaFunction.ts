@@ -15,44 +15,44 @@ import { LambdaFunction } from './LambdaFunction';
  * 
  * ### Configuration parameters ###
  * 
- * dependencies:
- *   controller:                  override for Controller dependency
- * connections:                   
- *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
- *   region:                      (optional) AWS region
- * credentials:    
- *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
- *   access_id:                   AWS access/client id
- *   access_key:                  AWS access/client id
+ * - dependencies:
+ *     - controller:                  override for Controller dependency
+ * - connections:                   
+ *     - discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *     - region:                      (optional) AWS region
+ * - credentials:    
+ *     - store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *     - access_id:                   AWS access/client id
+ *     - access_key:                  AWS access/client id
  * 
  * ### References ###
  * 
- * - *:logger:*:*:1.0               (optional) ILogger components to pass log messages
- * - *:counters:*:*:1.0             (optional) ICounters components to pass collected measurements
- * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connection
- * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * - <code>\*:logger:\*:\*:1.0</code>            (optional) ILogger components to pass log messages
+ * - <code>\*:counters:\*:\*:1.0</code>          (optional) ICounters components to pass collected measurements
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connection
+ * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
  * @see [[LambdaClient]]
  * 
  * ### Example ###
  * 
- * class MyLambdaFunction extends CommandableLambdaFunction {
- *    private _controller: IMyController;
- *    ...
- *    public constructor() {
- *       base("mygroup", "MyGroup lambda function");
- *       this._dependencyResolver.put(
- *           "controller",
- *           new Descriptor("mygroup","controller","*","*","1.0")
- *       );
- *    }
- * }
+ *     class MyLambdaFunction extends CommandableLambdaFunction {
+ *         private _controller: IMyController;
+ *         ...
+ *         public constructor() {
+ *             base("mygroup", "MyGroup lambda function");
+ *             this._dependencyResolver.put(
+ *                 "controller",
+ *                 new Descriptor("mygroup","controller","*","*","1.0")
+ *             );
+ *         }
+ *     }
  * 
- * let lambda = new MyLambdaFunction();
- * 
- * service.run((err) => {
- *    console.log("MyLambdaFunction is started");
- * });
+ *     let lambda = new MyLambdaFunction();
+ *     
+ *     service.run((err) => {
+ *         console.log("MyLambdaFunction is started");
+ *     });
  */
 export abstract class CommandableLambdaFunction extends LambdaFunction {
 

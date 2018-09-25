@@ -20,52 +20,52 @@ import { CloudWatchUnit } from './CloudWatchUnit';
  * 
  * ### Configuration parameters ###
  * 
- * connections:                   
- *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
- *   region:                      (optional) AWS region
- * credentials:    
- *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
- *   access_id:                   AWS access/client id
- *   access_key:                  AWS access/client id
- * options:
- *   interval:        interval in milliseconds to save current counters measurements (default: 5 mins)
- *   reset_timeout:   timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
+ * - connections:                   
+ *     - discovery_key:         (optional) a key to retrieve the connection from IDiscovery
+ *     - region:                (optional) AWS region
+ * - credentials:    
+ *     - store_key:             (optional) a key to retrieve the credentials from ICredentialStore
+ *     - access_id:             AWS access/client id
+ *     - access_key:            AWS access/client id
+ * - options:
+ *     - interval:              interval in milliseconds to save current counters measurements (default: 5 mins)
+ *     - reset_timeout:         timeout in milliseconds to reset the counters. 0 disables the reset (default: 0)
  * 
  * ### References ###
  * 
- * - *:context-info:*:*:1.0         (optional) ContextInfo to detect the context id and specify counters source
- * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
- * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * - <code>\*:context-info:\*:\*:1.0</code>      (optional) ContextInfo to detect the context id and specify counters source
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connections
+ * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
- * @see [[Counter]]
- * @see [[CachedCounters]]
- * @see [[CompositeLogger]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.counter.html Counter]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.cachedcounters.html CachedCounters]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/log.compositelogger.html CompositeLogger]]
  * 
  * ### Example ###
  * 
- * let counters = new CloudWatchCounters();
- * counters.config(ConfigParams.fromTuples(
- *     "connection.region", "us-east-1",
- *     "connection.access_id", "XXXXXXXXXXX",
- *     "connection.access_key", "XXXXXXXXXXX"
- * ));
- * counters.setReferences(References.fromTuples(
- *     new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
- * ));
- * 
- * counters.open("123", (err) => {
- *     ...
- * });
- * 
- * counters.increment("mycomponent.mymethod.calls");
- * let timing = counters.beginTiming("mycomponent.mymethod.exec_time");
- * try {
- *     ...
- * } finally {
- *     timing.endTiming();
- * }
- * 
- * counters.dump();
+ *     let counters = new CloudWatchCounters();
+ *     counters.config(ConfigParams.fromTuples(
+ *         "connection.region", "us-east-1",
+ *         "connection.access_id", "XXXXXXXXXXX",
+ *         "connection.access_key", "XXXXXXXXXXX"
+ *     ));
+ *     counters.setReferences(References.fromTuples(
+ *         new Descriptor("pip-services", "logger", "console", "default", "1.0"), new ConsoleLogger()
+ *     ));
+ *     
+ *     counters.open("123", (err) => {
+ *         ...
+ *     });
+ *     
+ *     counters.increment("mycomponent.mymethod.calls");
+ *     let timing = counters.beginTiming("mycomponent.mymethod.exec_time");
+ *     try {
+ *         ...
+ *     } finally {
+ *         timing.endTiming();
+ *     }
+ *     
+ *     counters.dump();
  */
 export class CloudWatchCounters extends CachedCounters implements IReferenceable, IOpenable {
     private _logger: CompositeLogger = new CompositeLogger();

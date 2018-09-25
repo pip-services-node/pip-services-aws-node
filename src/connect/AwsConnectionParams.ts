@@ -13,11 +13,11 @@ import { ConnectionParams } from 'pip-services-components-node';
  * 
  * ### Configuration parameters ###
  * 
- * access_id:     application access id
- * client_id:     alternative to access_id
- * access_key:    application secret key
- * client_key:    alternative to access_key
- * secret_key:    alternative to access_key
+ * - access_id:     application access id
+ * - client_id:     alternative to access_id
+ * - access_key:    application secret key
+ * - client_key:    alternative to access_key
+ * - secret_key:    alternative to access_key
  * 
  * In addition to standard parameters CredentialParams may contain any number of custom parameters
  * 
@@ -25,18 +25,18 @@ import { ConnectionParams } from 'pip-services-components-node';
  * 
  * ### Example ###
  * 
- * let connection = AwsConnectionParams.fromTuples(
- *    "region", "us-east-1",
- *    "access_id", "XXXXXXXXXXXXXXX",
- *    "secret_key", "XXXXXXXXXXXXXXX",
- *    "service", "s3",
- *    "bucket", "mybucket"
- * );
- * 
- * let region = connection.getRegion();                     // Result: "us-east-1"
- * let accessId = connection.getAccessId();                 // Result: "XXXXXXXXXXXXXXX"
- * let secretKey = connection.getAccessKey();               // Result: "XXXXXXXXXXXXXXX"
- * let pin = connection.getAsNullableString("bucket");      // Result: "mybucket"   
+ *     let connection = AwsConnectionParams.fromTuples(
+ *         "region", "us-east-1",
+ *         "access_id", "XXXXXXXXXXXXXXX",
+ *         "secret_key", "XXXXXXXXXXXXXXX",
+ *         "service", "s3",
+ *         "bucket", "mybucket"
+ *     );
+ *     
+ *     let region = connection.getRegion();                     // Result: "us-east-1"
+ *     let accessId = connection.getAccessId();                 // Result: "XXXXXXXXXXXXXXX"
+ *     let secretKey = connection.getAccessKey();               // Result: "XXXXXXXXXXXXXXX"
+ *     let pin = connection.getAsNullableString("bucket");      // Result: "mybucket"   
  */
 export class AwsConnectionParams extends ConfigParams {
 
