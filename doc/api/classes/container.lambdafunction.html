@@ -84,12 +84,12 @@
 							</ul>
 						</li>
 						<li>connections:<ul>
-								<li>discovery_key:               (optional) a key to retrieve the connection from IDiscovery</li>
+								<li>discovery_key:               (optional) a key to retrieve the connection from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a></li>
 								<li>region:                      (optional) AWS region</li>
 							</ul>
 						</li>
 						<li>credentials:<ul>
-								<li>store_key:                   (optional) a key to retrieve the credentials from ICredentialStore</li>
+								<li>store_key:                   (optional) a key to retrieve the credentials from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html" class="external">ICredentialStore</a></li>
 								<li>access_id:                   AWS access/client id</li>
 								<li>access_key:                  AWS access/client id</li>
 							</ul>
@@ -97,9 +97,9 @@
 					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><code>*:logger:*:*:1.0</code>            (optional) ILogger components to pass log messages</li>
-						<li><code>*:counters:*:*:1.0</code>          (optional) ICounters components to pass collected measurements</li>
-						<li><code>*:discovery:*:*:1.0</code>         (optional) IDiscovery services to resolve connection</li>
+						<li><code>*:logger:*:*:1.0</code>            (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html" class="external">ILogger</a> components to pass log messages</li>
+						<li><code>*:counters:*:*:1.0</code>          (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html" class="external">ICounters</a> components to pass collected measurements</li>
+						<li><code>*:discovery:*:*:1.0</code>         (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> services to resolve connection</li>
 						<li><code>*:credential-store:*:*:1.0</code>  (optional) Credential stores to resolve credentials</li>
 					</ul>
 					<dl class="tsd-comment-tags">
@@ -228,7 +228,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides Container.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -268,7 +268,7 @@ service.run((err) =&gt; {
 					<div class="tsd-signature tsd-kind-icon">_actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L99">container/LambdaFunction.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L99">container/LambdaFunction.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -292,7 +292,7 @@ service.run((err) =&gt; {
 					<aside class="tsd-sources">
 						<p>Inherited from Container._config</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:24</li>
+							<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:24</li>
 						</ul>
 					</aside>
 				</section>
@@ -302,7 +302,7 @@ service.run((err) =&gt; {
 					<div class="tsd-signature tsd-kind-icon">_config<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;./config/config.yml&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L103">container/LambdaFunction.ts:103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -317,7 +317,7 @@ service.run((err) =&gt; {
 					<div class="tsd-signature tsd-kind-icon">_counters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeCounters</span><span class="tsd-signature-symbol"> =&nbsp;new CompositeCounters()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L87">container/LambdaFunction.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L87">container/LambdaFunction.ts:87</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -332,7 +332,7 @@ service.run((err) =&gt; {
 					<div class="tsd-signature tsd-kind-icon">_dependency<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DependencyResolver</span><span class="tsd-signature-symbol"> =&nbsp;new DependencyResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L91">container/LambdaFunction.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L91">container/LambdaFunction.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -348,7 +348,7 @@ service.run((err) =&gt; {
 					<aside class="tsd-sources">
 						<p>Inherited from Container._factories</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:22</li>
+							<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:22</li>
 						</ul>
 					</aside>
 				</section>
@@ -359,7 +359,7 @@ service.run((err) =&gt; {
 					<aside class="tsd-sources">
 						<p>Inherited from Container._info</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:23</li>
+							<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:23</li>
 						</ul>
 					</aside>
 				</section>
@@ -370,7 +370,7 @@ service.run((err) =&gt; {
 					<aside class="tsd-sources">
 						<p>Inherited from Container._logger</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:21</li>
+							<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:21</li>
 						</ul>
 					</aside>
 				</section>
@@ -381,7 +381,7 @@ service.run((err) =&gt; {
 					<aside class="tsd-sources">
 						<p>Inherited from Container._references</p>
 						<ul>
-							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:25</li>
+							<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:25</li>
 						</ul>
 					</aside>
 				</section>
@@ -391,7 +391,7 @@ service.run((err) =&gt; {
 					<div class="tsd-signature tsd-kind-icon">_schemas<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L95">container/LambdaFunction.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L95">container/LambdaFunction.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -421,7 +421,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L310">container/LambdaFunction.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L310">container/LambdaFunction.ts:310</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -483,7 +483,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.addFactory</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:75</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:75</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -516,7 +516,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.close</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:106</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:106</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -574,7 +574,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.configure</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:44</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:44</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -614,7 +614,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L290">container/LambdaFunction.ts:290</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L290">container/LambdaFunction.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -663,7 +663,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L170">container/LambdaFunction.ts:170</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L170">container/LambdaFunction.ts:170</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -703,7 +703,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.isOpen</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:79</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:79</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -724,7 +724,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.open</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:97</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:97</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -796,7 +796,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.readConfigFromFile</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:55</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:55</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -845,7 +845,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L200">container/LambdaFunction.ts:200</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L200">container/LambdaFunction.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -869,7 +869,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L209">container/LambdaFunction.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L209">container/LambdaFunction.ts:209</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -954,7 +954,7 @@ service.run((err) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L182">container/LambdaFunction.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L182">container/LambdaFunction.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1006,7 +1006,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides Container.setReferences</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/ae21bb1/src/container/LambdaFunction.ts#L154">container/LambdaFunction.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-aws-node/blob/b7e679a/src/container/LambdaFunction.ts#L154">container/LambdaFunction.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1038,7 +1038,7 @@ service.run((err) =&gt; {
 							<aside class="tsd-sources">
 								<p>Inherited from Container.unsetReferences</p>
 								<ul>
-									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:67</li>
+									<li>Defined in D:/Work/Project/Node.js/documentation/pip-services-aws-node/node_modules/pip-services-container-node/obj/src/Container.d.ts:67</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -17,54 +17,54 @@ import { AwsConnectionResolver } from '../connect/AwsConnectionResolver';
  *
  * ### Configuration parameters ###
  *
- * connections:
- *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
- *   region:                      (optional) AWS region
- * credentials:
- *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
- *   access_id:                   AWS access/client id
- *   access_key:                  AWS access/client id
- * options:
- *   connect_timeout:             (optional) connection timeout in milliseconds (default: 10 sec)
+ * - connections:
+ *     - discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ *     - region:                      (optional) AWS region
+ * - credentials:
+ *     - store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
+ *     - access_id:                   AWS access/client id
+ *     - access_key:                  AWS access/client id
+ * - options:
+ *     - connect_timeout:             (optional) connection timeout in milliseconds (default: 10 sec)
  *
  * ### References ###
  *
- * - *:logger:*:*:1.0               (optional) ILogger components to pass log messages
- * - *:counters:*:*:1.0             (optional) ICounters components to pass collected measurements
- * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connection
- * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * - <code>\*:logger:\*:\*:1.0</code>            (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>\*:counters:\*:\*:1.0</code>          (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html ICounters]] components to pass collected measurements
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connection
+ * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  *
  * @see [[LambdaFunction]]
  * @see [[CommandableLambdaClient]]
  *
  * ### Example ###
  *
- * class MyLambdaClient extends LambdaClient implements IMyClient {
- *    ...
+ *     class MyLambdaClient extends LambdaClient implements IMyClient {
+ *         ...
  *
- *    public getData(correlationId: string, id: string,
- *        callback: (err: any, result: MyData) => void): void {
+ *         public getData(correlationId: string, id: string,
+ *             callback: (err: any, result: MyData) => void): void {
  *
- *        let timing = this.instrument(correlationId, 'myclient.get_data');
- *        this.call("get_data" correlationId, { id: id }, (err, result) => {
- *            timing.endTiming();
- *            callback(err, result);
- *        });
- *    }
- *    ...
- * }
+ *             let timing = this.instrument(correlationId, 'myclient.get_data');
+ *             this.call("get_data" correlationId, { id: id }, (err, result) => {
+ *                 timing.endTiming();
+ *                 callback(err, result);
+ *             });
+ *         }
+ *         ...
+ *     }
  *
- * let client = new MyLambdaClient();
- * client.configure(ConfigParams.fromTuples(
- *     "connection.region", "us-east-1",
- *     "connection.access_id", "XXXXXXXXXXX",
- *     "connection.access_key", "XXXXXXXXXXX",
- *     "connection.arn", "YYYYYYYYYYYYY"
- * ));
+ *     let client = new MyLambdaClient();
+ *     client.configure(ConfigParams.fromTuples(
+ *         "connection.region", "us-east-1",
+ *         "connection.access_id", "XXXXXXXXXXX",
+ *         "connection.access_key", "XXXXXXXXXXX",
+ *         "connection.arn", "YYYYYYYYYYYYY"
+ *     ));
  *
- * client.getData("123", "1", (err, result) => {
- *   ...
- * });
+ *     client.getData("123", "1", (err, result) => {
+ *         ...
+ *     });
  */
 export declare abstract class LambdaClient implements IOpenable, IConfigurable, IReferenceable {
     /**

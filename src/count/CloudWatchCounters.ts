@@ -21,10 +21,10 @@ import { CloudWatchUnit } from './CloudWatchUnit';
  * ### Configuration parameters ###
  * 
  * - connections:                   
- *     - discovery_key:         (optional) a key to retrieve the connection from IDiscovery
+ *     - discovery_key:         (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
  *     - region:                (optional) AWS region
  * - credentials:    
- *     - store_key:             (optional) a key to retrieve the credentials from ICredentialStore
+ *     - store_key:             (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
  *     - access_id:             AWS access/client id
  *     - access_key:            AWS access/client id
  * - options:
@@ -33,8 +33,8 @@ import { CloudWatchUnit } from './CloudWatchUnit';
  * 
  * ### References ###
  * 
- * - <code>\*:context-info:\*:\*:1.0</code>      (optional) ContextInfo to detect the context id and specify counters source
- * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connections
+ * - <code>\*:context-info:\*:\*:1.0</code>      (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/info.contextinfo.html ContextInfo]] to detect the context id and specify counters source
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
  * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
  * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/count.counter.html Counter]] (in the Pip.Services components package)

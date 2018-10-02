@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/** @module connect */
+/** @hidden */
 let _ = require('lodash');
+/** @hidden */
 let async = require('async');
 const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_components_node_2 = require("pip-services-components-node");
@@ -11,44 +14,44 @@ const AwsConnectionParams_1 = require("./AwsConnectionParams");
  *
  * ### Configuration parameters ###
  *
- * connections:
- *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
- *   region:                      (optional) AWS region
- *   partition:                   (optional) AWS partition
- *   service:                     (optional) AWS service
- *   resource_type:               (optional) AWS resource type
- *   resource:                    (optional) AWS resource id
- *   arn:                         (optional) AWS resource ARN
- * credentials:
- *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
- *   access_id:                   AWS access/client id
- *   access_key:                  AWS access/client id
+ * - connections:
+ *     - discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ *     - region:                      (optional) AWS region
+ *     - partition:                   (optional) AWS partition
+ *     - service:                     (optional) AWS service
+ *     - resource_type:               (optional) AWS resource type
+ *     - resource:                    (optional) AWS resource id
+ *     - arn:                         (optional) AWS resource ARN
+ * - credentials:
+ *     - store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
+ *     - access_id:                   AWS access/client id
+ *     - access_key:                  AWS access/client id
  *
  * ### References ###
  *
- * - *:discovery:*:*:1.0            (optional) IDiscovery services to resolve connections
- * - *:credential-store:*:*:1.0     (optional) Credential stores to resolve credentials
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
+ * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  *
- * @see [[ConnectionParams]]
- * @see [[IDiscovery]]
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/connect.connectionparams.html ConnectionParams]] (in the Pip.Services components package)
+ * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] (in the Pip.Services components package)
  *
  * ### Example ###
  *
- * let config = ConfigParams.fromTuples(
- *      "connection.region", "us-east1",
- *      "connection.service", "s3",
- *      "connection.bucket", "mybucket",
- *      "credential.access_id", "XXXXXXXXXX",
- *      "credential.access_key", "XXXXXXXXXX"
- * );
+ *     let config = ConfigParams.fromTuples(
+ *         "connection.region", "us-east1",
+ *         "connection.service", "s3",
+ *         "connection.bucket", "mybucket",
+ *         "credential.access_id", "XXXXXXXXXX",
+ *         "credential.access_key", "XXXXXXXXXX"
+ *     );
  *
- * let connectionResolver = new AwsConnectionResolver();
- * connectionResolver.configure(config);
- * connectionResolver.setReferences(references);
+ *     let connectionResolver = new AwsConnectionResolver();
+ *     connectionResolver.configure(config);
+ *     connectionResolver.setReferences(references);
  *
- * connectionResolver.resolve("123", (err, connection) => {
- *      // Now use connection...
- * });
+ *     connectionResolver.resolve("123", (err, connection) => {
+ *         // Now use connection...
+ *     });
  */
 class AwsConnectionResolver {
     constructor() {
@@ -86,7 +89,7 @@ class AwsConnectionResolver {
      * @param correlationId     (optional) transaction id to trace execution through call chain.
      * @param callback 			callback function that receives AWSConnectionParams value or error.
      *
-     * @see [[IDiscovery]]
+     * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] (in the Pip.Services components package)
      */
     resolve(correlationId, callback) {
         let connection = new AwsConnectionParams_1.AwsConnectionParams();

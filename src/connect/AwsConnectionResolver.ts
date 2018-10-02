@@ -22,7 +22,7 @@ import { AwsConnectionParams } from './AwsConnectionParams';
  * ### Configuration parameters ###
  * 
  * - connections:                   
- *     - discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *     - discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
  *     - region:                      (optional) AWS region
  *     - partition:                   (optional) AWS partition
  *     - service:                     (optional) AWS service
@@ -30,13 +30,13 @@ import { AwsConnectionParams } from './AwsConnectionParams';
  *     - resource:                    (optional) AWS resource id
  *     - arn:                         (optional) AWS resource ARN
  * - credentials:    
- *     - store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *     - store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
  *     - access_id:                   AWS access/client id
  *     - access_key:                  AWS access/client id
  * 
  * ### References ###
  * 
- * - <code>\*:discovery:\*:\*:1.0</code>         (optional) IDiscovery services to resolve connections
+ * - <code>\*:discovery:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
  * - <code>\*:credential-store:\*:\*:1.0</code>  (optional) Credential stores to resolve credentials
  * 
  * @see [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/connect.connectionparams.html ConnectionParams]] (in the Pip.Services components package)
