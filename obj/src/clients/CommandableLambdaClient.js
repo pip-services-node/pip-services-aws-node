@@ -5,7 +5,7 @@ const LambdaClient_1 = require("./LambdaClient");
 /**
  * Abstract client that calls commandable AWS Lambda Functions.
  *
- * Commandable services are generated automatically for ICommandable objects.
+ * Commandable services are generated automatically for [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/commands.icommandable.html ICommandable objects]].
  * Each command is exposed as action determined by "cmd" parameter.
  *
  * ### Configuration parameters ###

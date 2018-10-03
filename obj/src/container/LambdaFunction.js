@@ -19,8 +19,8 @@ const pip_services_components_node_2 = require("pip-services-components-node");
  * When handling calls "cmd" parameter determines which what action shall be called, while
  * other parameters are passed to the action itself.
  *
- * Container configuration for this Lambda function is stored in "./config/config.yml" file.
- * But this path can be overriden by CONFIG_PATH environment variable.
+ * Container configuration for this Lambda function is stored in <code>"./config/config.yml"</code> file.
+ * But this path can be overriden by <code>CONFIG_PATH</code> environment variable.
  *
  * ### Configuration parameters ###
  *

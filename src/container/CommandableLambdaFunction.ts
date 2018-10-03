@@ -8,10 +8,10 @@ import { LambdaFunction } from './LambdaFunction';
 /**
  * Abstract AWS Lambda function, that acts as a container to instantiate and run components
  * and expose them via external entry point. All actions are automatically generated for commands
- * defined in ICommandable components. Each command is exposed as an action defined by "cmd" parameter.
+ * defined in [[https://rawgit.com/pip-services-node/pip-services-commons-node/master/doc/api/interfaces/commands.icommandable.html ICommandable components]]. Each command is exposed as an action defined by "cmd" parameter.
  *  
- * Container configuration for this Lambda function is stored in "./config/config.yml" file.
- * But this path can be overriden by CONFIG_PATH environment variable.
+ * Container configuration for this Lambda function is stored in <code>"./config/config.yml"</code> file.
+ * But this path can be overriden by <code>CONFIG_PATH</code> environment variable.
  * 
  * ### Configuration parameters ###
  * 

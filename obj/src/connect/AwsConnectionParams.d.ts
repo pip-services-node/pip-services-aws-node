@@ -15,7 +15,7 @@ import { ConfigException } from 'pip-services-commons-node';
  * - client_key:    alternative to access_key
  * - secret_key:    alternative to access_key
  *
- * In addition to standard parameters CredentialParams may contain any number of custom parameters
+ * In addition to standard parameters [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/classes/auth.credentialparams.html CredentialParams]] may contain any number of custom parameters
  *
  * @see [[AwsConnectionResolver]]
  *
